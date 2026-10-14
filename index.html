@@ -37,9 +37,9 @@
   </nav>
 
   <div class="menu" id="menu">
-    <a href="#work" data-i18n="menuWork">Trabalhos</a>
+    <a href="#work" data-i18n="menuWork">Cortes</a>
     <a href="#creators" data-i18n="menuCreators">Cases</a>
-    <a href="#contact" data-i18n="menuContact">Fale Comigo</a>
+    <a href="#contact" data-i18n="menuContact">Contato</a>
   </div>
 
   <main id="top">
@@ -73,8 +73,7 @@
 
     <!-- CTA -->
     <section class="section cta">
-      <h2 class="title reveal" data-i18n="ctaTitle">PRONTO PARA ELEVAR SUA MARCA?</h2>
-      <p class="muted reveal" data-i18n="ctaText">Vamos criar um motion que faz as pessoas pararem de rolar.</p>
+      <h2 class="title reveal" data-i18n="ctaTitle">PRONTO PARA VIRALIZAR?</h2>
       <a href="#contact" class="btn btn--primary reveal" data-i18n="ctaBtn">COMEÇAR UM PROJETO</a>
     </section>
 
@@ -89,20 +88,35 @@
     <!-- PARCEIRO -->
     <section class="section partner" id="partner">
       <div class="partner__box reveal">
-        <div class="eyebrow" data-i18n="partnerEyebrow">PARCEIRO</div>
-        <div class="partner__logo" id="partnerLogo"></div>
-        <h2 class="partner__title" data-i18n="partnerTitle">Prefere uma empresa? Trabalhe com a Komp</h2>
-        <p class="muted" data-i18n="partnerText">Para projetos maiores, trabalho junto com a Komp, minha empresa parceira.</p>
+        <div class="partner__marks">
+          <span class="avatar" data-avatar></span>
+          <span class="collab__x">×</span>
+          <span class="kmark-wrap"><span class="kmark"></span></span>
+        </div>
+        <div class="partner__copy">
+          <h2 class="partner__title"><span data-i18n="partnerTitleA">Projeto maior?</span> <em data-i18n="partnerTitleB">Fecha com a Komp.</em></h2>
+          <p class="muted" data-i18n="partnerText">Estratégia, produção e distribuição de cortes em escala, com a minha empresa parceira.</p>
+        </div>
         <a href="#partner" class="btn btn--primary" data-partner-link data-i18n="partnerBtn">CONHECER A KOMP ↗</a>
       </div>
     </section>
   </main>
 
+  <!-- faixa em movimento -->
+  <div class="ticker" aria-hidden="true"><div class="ticker__track" id="ticker"></div></div>
+
   <footer class="footer">
-    <div class="footer__brand"><span class="nav__logo avatar" data-avatar></span><span class="collab__x">×</span><span class="kmark-wrap"><span class="kmark"></span></span> <span data-i18n="studio">NETO RAMOS × KOMP</span></div>
-    <div class="footer__links">
-      <a href="#work" data-i18n="menuWork">Trabalhos</a>
-        <a href="#contact" data-i18n="menuContact">Fale Comigo</a>
+    <div class="footer__top">
+      <a href="#top" class="footer__brand" aria-label="Voltar ao topo">
+        <span class="avatar" data-avatar></span><span class="collab__x">×</span><span class="kmark-wrap"><span class="kmark"></span></span>
+        <span class="footer__name" data-i18n="studio">NETO RAMOS × KOMP</span>
+      </a>
+      <nav class="footer__links">
+        <a href="#work" data-i18n="menuWork">Cortes</a>
+        <a href="#creators" data-i18n="menuCreators">Cases</a>
+        <a href="#contact" data-i18n="menuContact">Contato</a>
+        <a href="#partner" data-partner-link>Komp ↗</a>
+      </nav>
     </div>
     <p class="footer__copy">© <span id="year"></span> <span data-i18n="studio">NETO RAMOS × KOMP</span></p>
   </footer>

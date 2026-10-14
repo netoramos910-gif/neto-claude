@@ -142,6 +142,9 @@
     $("#langBtn").textContent = lang === "pt" ? "EN" : "PT";
     splitTitle();
     renderCreators();
+    const words = t("ticker") || [];
+    const row = words.map((w) => `<span>${w}</span><i>✦</i>`).join("");
+    $("#ticker").innerHTML = row.repeat(4);
   }
 
   function splitTitle() {
@@ -174,9 +177,6 @@
   if (partner.url) document.querySelectorAll("[data-partner-link]").forEach((a) => {
     a.href = partner.url; a.target = "_blank"; a.rel = "noopener";
   });
-  $("#partnerLogo").innerHTML = partner.logo
-    ? '<span class="kmark-wrap"><span class="kmark"></span></span>'
-    : `<span>${partner.name || ""}</span>`;
   if (partner.logo) document.querySelectorAll(".kmark").forEach((k) => {
     k.style.webkitMaskImage = k.style.maskImage = `url("${partner.logo}")`;
   });
