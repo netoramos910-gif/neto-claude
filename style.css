@@ -104,7 +104,6 @@ body::before {
 
 /* ---------- HERO ---------- */
 .hero {
-  isolation: isolate;
   position: relative; min-height: 100svh;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   text-align: center; padding: 120px 16px 80px; overflow: hidden;
@@ -122,43 +121,6 @@ body::before {
   background: radial-gradient(ellipse at 50% 100%, var(--accent-glow), transparent 70%);
   filter: blur(30px);
 }
-/* foto do topo montada em "cortes", como numa linha do tempo de edição */
-.hero__photo {
-  position: absolute; z-index: -1; left: 50%; bottom: 0;
-  height: 86%; max-height: 900px; aspect-ratio: 620 / 1300; max-width: 100%;
-  transform: translateX(-50%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 62%, transparent 96%), linear-gradient(to right, transparent, #000 18%, #000 82%, transparent);
-  -webkit-mask-composite: source-in;
-          mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 62%, transparent 96%), linear-gradient(to right, transparent, #000 18%, #000 82%, transparent);
-          mask-composite: intersect;
-  opacity: .5;
-}
-.hero__slices { position: absolute; inset: 0; display: flex; overflow: hidden; }
-.hero__slice {
-  flex: 1; height: 100%; background-repeat: no-repeat;
-  filter: grayscale(.35) contrast(1.1) brightness(.85);
-  box-shadow: inset 1px 0 0 rgba(31, 182, 255, .18);
-}
-.hero__playhead {
-  position: absolute; top: 0; bottom: 0; left: 0; width: 2px;
-  background: var(--accent); box-shadow: 0 0 18px 4px var(--accent-glow); opacity: 0;
-}
-.hero__playhead::before {
-  content: ""; position: absolute; top: 14%; left: -6px; border: 7px solid transparent; border-top-color: var(--accent);
-}
-.hero__rec {
-  position: absolute; top: 20%; right: -6px; transform: translateX(100%);
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 10px; font-weight: 600; letter-spacing: .15em; color: var(--muted); white-space: nowrap;
-}
-.hero__rec i { width: 7px; height: 7px; border-radius: 50%; background: #ff3b3b; animation: blink 1s steps(2) infinite; }
-.hero__rec b { font-variant-numeric: tabular-nums; color: var(--text); font-weight: 500; }
-@keyframes blink { 50% { opacity: 0; } }
-@media (max-width: 640px) {
-  .hero__photo { height: 78%; opacity: .42; }
-  .hero__rec { top: auto; bottom: 14%; right: 50%; transform: translateX(50%); }
-}
-
 .tag {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 8px 16px; border: 1px solid rgba(255,255,255,.25); border-radius: 4px;
