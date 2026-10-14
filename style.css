@@ -105,7 +105,6 @@ body::before {
 .nav__logo.avatar--mark .nmark { --h: 26px; }
 .loader__logo.avatar--mark { width: auto; height: auto; }
 .loader__logo.avatar--mark .nmark { --h: 64px; }
-.footer .nmark { --h: 22px; }
 @keyframes kshine { 0% { background-position: 100% 0; } 55%, 100% { background-position: 0 0; } }
 .footer .kmark { --h: 28px; }
 
@@ -503,7 +502,7 @@ body::before {
 .footer__top { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
 .footer__brand { display: flex; align-items: center; gap: 10px; font-weight: 600; letter-spacing: .06em; }
 .footer__brand .avatar { display: contents; }
-.footer .nmark, .footer .kmark { --h: 22px; }
+.footer .nmark { --h: 30px; }
 .footer__name { margin-left: 6px; font-size: 14px; }
 .footer__links { display: flex; flex-wrap: wrap; gap: 8px; }
 .footer__links a {
