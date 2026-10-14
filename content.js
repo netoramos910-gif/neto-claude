@@ -26,11 +26,11 @@ const CONTENT = {
   // Seus números (contam subindo quando aparecem na tela).
   //  - value: número inteiro; prefix/suffix: texto antes/depois (ex.: "+", "M").
   stats: [
-    { value: 100, prefix: "+", suffix: "M", pt: "de visualizações geradas", en: "views generated" },
-    { value: 108, prefix: "", suffix: "K", pt: "seguidores na minha página", en: "followers on my page" },
+    { value: 100, prefix: "+", suffix: "M", pt: "visualizações", en: "views" },
+    { value: 108, prefix: "", suffix: "K", pt: "seguidores", en: "followers" },
   ],
-  // Sua página (Kingsman). Preencha o link e o logo quando tiver (ex.: "media/kingsman.png").
-  page: { name: "Kingsman", url: "", logo: "" },
+  // Sua página. Preencha "url" com o link do Instagram dela para aparecer o botão "Ver a página".
+  page: { name: "Kingsman Club", url: "", logo: "media/kingsman.jpg" },
 
   // Cases: pessoas e empresas que você já atendeu.
   //  - followers: número de seguidores (ex.: "12M"). Deixe "" para esconder.
@@ -64,6 +64,7 @@ const CONTENT = {
       workEyebrow: "TRABALHOS SELECIONADOS", workTitle: "CORTES FEITOS POR MIM",
       creatorsEyebrow: "CASES", creatorsTitle: "QUEM JÁ CONFIOU NO MEU TRABALHO", followers: "seguidores", watch: "Ver vídeo",
       ctaTitle: "PRONTO PARA VIRALIZAR?", ctaBtn: "COMEÇAR UM PROJETO",
+      statsEyebrow: "MINHA PÁGINA · KINGSMAN CLUB", statsTitle: "RESULTADOS QUE GEREI COM A MINHA PÁGINA",
       howEyebrow: "COMO FUNCIONA", howTitle: "DO VÍDEO LONGO AO VIRAL",
       how1t: "Corte", how1d: "Encontro os momentos mais fortes do seu conteúdo e transformo em cortes que prendem nos primeiros segundos.",
       how2t: "Distribuição", how2d: "Publico na hora certa e nas plataformas certas: Reels, TikTok e Shorts.",
@@ -80,6 +81,7 @@ const CONTENT = {
       workEyebrow: "SELECTED WORKS", workTitle: "CLIPS MADE BY ME",
       creatorsEyebrow: "CASES", creatorsTitle: "WHO HAS TRUSTED MY WORK", followers: "followers", watch: "Watch video",
       ctaTitle: "READY TO GO VIRAL?", ctaBtn: "START A PROJECT",
+      statsEyebrow: "MY PAGE · KINGSMAN CLUB", statsTitle: "RESULTS I GENERATED WITH MY PAGE",
       howEyebrow: "HOW IT WORKS", howTitle: "FROM LONG VIDEO TO VIRAL",
       how1t: "Cut", how1d: "I find the strongest moments in your content and turn them into clips that hook viewers in the first seconds.",
       how2t: "Distribution", how2d: "Posted at the right time on the right platforms: Reels, TikTok and Shorts.",
