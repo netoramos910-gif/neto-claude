@@ -57,8 +57,8 @@ const CONTENT = {
     pt: {
       studio: "SEU STUDIO",
       menuWork: "Trabalhos", menuWhy: "Diferenciais", menuCreators: "Cases", menuContact: "Fale Comigo",
-      heroTag: "MOTION & VFX STUDIO", heroTitle: "MOTION DESIGN",
-      heroText: "Animações sob medida para marcas e criadores que querem ser lembrados. Intros, vinhetas e transições pensadas quadro a quadro.",
+      heroTag: "CORTES · EDIÇÃO · ANIMAÇÃO", heroTitle: "VIRALIZE",
+      heroText: "Cortes e edições feitos para prender a atenção nos primeiros segundos e fazer o seu conteúdo rodar nas redes.",
       heroCta: "VER MEU TRABALHO ↓", heroCta2: "Pedir um orçamento",
       workEyebrow: "TRABALHOS SELECIONADOS", workTitle: "FEITO POR NÓS",
       whyTitle: "POR QUE ME ESCOLHER", whySub: "FEITO PARA IMPACTO VISUAL", featured: "DESTAQUE",
@@ -69,8 +69,8 @@ const CONTENT = {
     en: {
       studio: "YOUR STUDIO",
       menuWork: "Work", menuWhy: "Why me", menuCreators: "Cases", menuContact: "Contact",
-      heroTag: "MOTION & VFX STUDIO", heroTitle: "MOTION DESIGN",
-      heroText: "Custom animation for brands and creators who want to be remembered. Intros, idents and transitions crafted frame by frame.",
+      heroTag: "CLIPS · EDITING · ANIMATION", heroTitle: "GO VIRAL",
+      heroText: "Clips and edits built to hook viewers in the first seconds and make your content spread across social media.",
       heroCta: "SEE MY WORK ↓", heroCta2: "Request a quote",
       workEyebrow: "SELECTED WORKS", workTitle: "MADE BY US",
       whyTitle: "WHY CHOOSE ME", whySub: "BUILT FOR VISUAL IMPACT", featured: "FEATURED",
