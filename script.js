@@ -181,6 +181,24 @@
     k.style.webkitMaskImage = k.style.maskImage = `url("${partner.logo}")`;
   });
 
+  // "como funciona": desenha as ilustrações e conta as views quando aparecem na tela
+  const fmt = (n) => n.toLocaleString(lang === "pt" ? "pt-BR" : "en-US");
+  const drawIO = new IntersectionObserver((entries) => entries.forEach((e) => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add("is-drawn");
+    drawIO.unobserve(e.target);
+    const c = e.target.querySelector(".how__counter");
+    if (c) {
+      const to = +c.dataset.to, t0 = performance.now(), dur = 2200;
+      (function count(now) {
+        const k = Math.min((now - t0) / dur, 1), ease = 1 - Math.pow(1 - k, 3);
+        c.textContent = (k === 1 ? "+" : "") + fmt(Math.round(to * ease));
+        if (k < 1) requestAnimationFrame(count);
+      })(t0);
+    }
+  }), { threshold: 0.35 });
+  document.querySelectorAll(".how__step").forEach((el) => drawIO.observe(el));
+
   // ---------- init ----------
   renderVideos();
   renderContacts();
