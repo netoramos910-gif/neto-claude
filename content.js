@@ -28,13 +28,15 @@ const CONTENT = {
     ],
   },
 
-  // Clientes / criadores. "avatar" = caminho de uma imagem (opcional).
+  // Cases: pessoas e empresas que você já atendeu.
+  //  - followers: número de seguidores (ex.: "12M"). Deixe "" para esconder.
+  //  - video: caminho de um vídeo (ex.: "media/cases/g4.mp4") ou link. Deixe "" se não tiver.
+  //  - logo: true para imagens de logo (mostra a imagem inteira, sem cortar).
   creators: [
-    { name: "Cliente Um",    followers: "120K", avatar: "", color: "#1fb6ff" },
-    { name: "Cliente Dois",  followers: "540K", avatar: "", color: "#22c55e" },
-    { name: "Marca Três",    followers: "88K",  avatar: "", color: "#e5322d" },
-    { name: "Criador Quatro",followers: "1.2M", avatar: "", color: "#f5a524" },
-    { name: "Studio Cinco",  followers: "32K",  avatar: "", color: "#6c5ce7" },
+    { name: "Nikolas Ferreira", followers: "", avatar: "media/cases/nikolas-ferreira.jpg", video: "", color: "#22c55e" },
+    { name: "Vitor Lelis",      followers: "", avatar: "media/cases/vitor-lelis.jpg",      video: "", color: "#1fb6ff" },
+    { name: "Alfredo Soares",   followers: "", avatar: "media/cases/alfredo-soares.jpg",   video: "", color: "#6c5ce7" },
+    { name: "G4",               followers: "", avatar: "media/cases/g4.jpg",               video: "", color: "#0b1f3a", logo: true },
   ],
 
   contacts: [
@@ -47,25 +49,25 @@ const CONTENT = {
   i18n: {
     pt: {
       studio: "SEU STUDIO",
-      menuWork: "Trabalhos", menuWhy: "Diferenciais", menuCreators: "Clientes", menuContact: "Fale Comigo",
+      menuWork: "Trabalhos", menuWhy: "Diferenciais", menuCreators: "Cases", menuContact: "Fale Comigo",
       heroTag: "MOTION & VFX STUDIO", heroTitle: "MOTION DESIGN",
       heroText: "Animações sob medida para marcas e criadores que querem ser lembrados. Intros, vinhetas e transições pensadas quadro a quadro.",
       heroCta: "VER MEU TRABALHO ↓", heroCta2: "Pedir um orçamento",
       workEyebrow: "TRABALHOS SELECIONADOS", workTitle: "PROJETOS DE MOTION",
       whyTitle: "POR QUE ME ESCOLHER", whySub: "FEITO PARA IMPACTO VISUAL", featured: "DESTAQUE",
-      creatorsEyebrow: "CRIADORES QUE CONFIARAM", followers: "seguidores",
+      creatorsEyebrow: "CASES", creatorsTitle: "QUEM JÁ CONFIOU NO MEU TRABALHO", followers: "seguidores", watch: "Ver vídeo",
       ctaTitle: "PRONTO PARA ELEVAR SUA MARCA?", ctaText: "Vamos criar um motion que faz as pessoas pararem de rolar.", ctaBtn: "COMEÇAR UM PROJETO",
       contactEyebrow: "CONTATO", contactA: "Vamos", contactB: "Conversar", contactText: "Tem um projeto em mente? Me chama.",
     },
     en: {
       studio: "YOUR STUDIO",
-      menuWork: "Work", menuWhy: "Why me", menuCreators: "Clients", menuContact: "Contact",
+      menuWork: "Work", menuWhy: "Why me", menuCreators: "Cases", menuContact: "Contact",
       heroTag: "MOTION & VFX STUDIO", heroTitle: "MOTION DESIGN",
       heroText: "Custom animation for brands and creators who want to be remembered. Intros, idents and transitions crafted frame by frame.",
       heroCta: "SEE MY WORK ↓", heroCta2: "Request a quote",
       workEyebrow: "SELECTED WORKS", workTitle: "MOTION PROJECTS",
       whyTitle: "WHY CHOOSE ME", whySub: "BUILT FOR VISUAL IMPACT", featured: "FEATURED",
-      creatorsEyebrow: "CREATORS WHO TRUSTED ME", followers: "followers",
+      creatorsEyebrow: "CASES", creatorsTitle: "WHO HAS TRUSTED MY WORK", followers: "followers", watch: "Watch video",
       ctaTitle: "READY TO ELEVATE YOUR BRAND?", ctaText: "Let's create motion that makes people stop scrolling.", ctaBtn: "START A PROJECT",
       contactEyebrow: "CONTACT", contactA: "Let's", contactB: "Talk", contactText: "Got a project in mind? Reach out.",
     },

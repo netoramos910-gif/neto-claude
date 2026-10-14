@@ -30,15 +30,39 @@
   }
 
   function renderCreators() {
-    const item = (c) => `
-      <div class="creator">
-        <div class="creator__avatar" style="--c:${c.color}">${c.avatar ? `<img src="${c.avatar}" alt="${c.name}" />` : c.name[0]}</div>
-        <b>${c.name}</b><span>${c.followers} ${t("followers")}</span>
+    const item = (c, i) => `
+      <div class="creator" style="--d:${(i % 4) * -1.1}s">
+        <div class="creator__avatar ${c.logo ? "creator__avatar--logo" : ""}" style="--c:${c.color}">
+          ${c.avatar ? `<img src="${c.avatar}" alt="${c.name}" loading="lazy" />` : c.name[0]}
+          ${c.video ? `<button class="creator__play" data-video="${c.video}" aria-label="${t("watch")}: ${c.name}">▶</button>` : ""}
+        </div>
+        <b>${c.name}</b>
+        ${c.followers ? `<span>${c.followers} ${t("followers")}</span>` : ""}
       </div>`;
-    // duplicado para o loop infinito do carrossel
-    const list = CONTENT.creators.map(item).join("");
+    // repete a lista até encher a tela e duplica para o loop infinito do carrossel
+    let items = CONTENT.creators;
+    while (items.length < 8) items = items.concat(CONTENT.creators);
+    const list = items.map(item).join("");
     $("#creatorsTrack").innerHTML = list + list;
   }
+
+  // player de vídeo dos cases
+  const modal = document.createElement("div");
+  modal.className = "modal";
+  modal.innerHTML = '<button class="modal__close" aria-label="Fechar">✕</button><div class="modal__box"></div>';
+  document.body.appendChild(modal);
+  const closeModal = () => { modal.classList.remove("open"); modal.querySelector(".modal__box").innerHTML = ""; };
+  modal.addEventListener("click", (e) => { if (e.target === modal || e.target.classList.contains("modal__close")) closeModal(); });
+  document.addEventListener("keydown", (e) => e.key === "Escape" && closeModal());
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".creator__play");
+    if (!btn) return;
+    const src = btn.dataset.video;
+    modal.querySelector(".modal__box").innerHTML = /\.(mp4|webm|mov)$/i.test(src)
+      ? `<video src="${src}" controls autoplay playsinline></video>`
+      : `<iframe src="${src}" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
+    modal.classList.add("open");
+  });
 
   function renderContacts() {
     $("#contacts").innerHTML = CONTENT.contacts.map((c) => `
