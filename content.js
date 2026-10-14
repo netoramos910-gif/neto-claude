@@ -29,6 +29,14 @@ const CONTENT = {
     { value: 100, prefix: "+", suffix: "M", pt: "visualizações", en: "views" },
     { value: 108, prefix: "", suffix: "K", pt: "seguidores", en: "followers" },
   ],
+  // Cortes que viralizaram na sua página (views em milhões: 1.2 = 1,2M).
+  virals: [
+    { src: "media/kingsman/viral-1.mp4", poster: "media/kingsman/viral-1.jpg", views: 1 },
+    { src: "media/kingsman/viral-2.mp4", poster: "media/kingsman/viral-2.jpg", views: 1.1 },
+    { src: "media/kingsman/viral-3.mp4", poster: "media/kingsman/viral-3.jpg", views: 1.2 },
+    { src: "media/kingsman/viral-4.mp4", poster: "media/kingsman/viral-4.jpg", views: 1.1 },
+    { src: "media/kingsman/viral-5.mp4", poster: "media/kingsman/viral-5.jpg", views: 1 },
+  ],
   // Sua página. Preencha "url" com o link do Instagram dela para aparecer o botão "Ver a página".
   page: { name: "Kingsman Club", url: "", logo: "media/kingsman.jpg" },
 
@@ -42,7 +50,7 @@ const CONTENT = {
     { name: "Alfredo Soares",   followers: "1,7M", avatar: "media/cases/alfredo-soares.jpg",   video: "", color: "#6c5ce7" },
     { name: "Vitor Lelis",      followers: "1,6M", avatar: "media/cases/vitor-lelis.jpg",      video: "", color: "#1fb6ff" },
     { name: "Sermota",          followers: "3,9M", avatar: "media/cases/sermota.jpg",          video: "", color: "#c9822b", role: "" },
-    { name: "G4 Business",      followers: "3,2M", avatar: "media/cases/g4.jpg",               video: "", color: "#0b1f3a", logo: true },
+    { name: "G4 Business",      followers: "3,2M", avatar: "media/cases/g4.jpg",               video: "", color: "#091e33" },
     { name: "Willian Naor",     followers: "53,2K", avatar: "media/cases/william.jpg",          video: "", color: "#1fb6ff", role: "Founder & VP da Loovi" },
     { name: "Alessandro Cunha", followers: "52,7K", avatar: "media/cases/alessandro-cunha.jpg", video: "", color: "#14a3a3", role: "Fundador do Grupo BC Energia" },
   ],
@@ -80,7 +88,7 @@ const CONTENT = {
         ["Como funciona o corte grátis?", "Você me manda um vídeo e eu devolvo um corte editado, sem compromisso, para você ver a qualidade antes de fechar."],
         ["Vocês atendem projetos grandes?", "Sim. Para operações maiores, trabalho junto com a Komp, minha empresa parceira."],
       ],
-      statsEyebrow: "MINHA PÁGINA · KINGSMAN CLUB", statsTitle: "RESULTADOS QUE GEREI COM A MINHA PÁGINA",
+      viralsLabel: "CORTES QUE VIRALIZARAM NA PÁGINA", statsEyebrow: "MINHA PÁGINA · KINGSMAN CLUB", statsTitle: "RESULTADOS QUE GEREI COM A MINHA PÁGINA",
       howEyebrow: "O QUE EU FAÇO", howTitle: "DO CORTE AO VIRAL",
       how1t: "Corte", how1d: "Encontro os momentos mais fortes do seu conteúdo e transformo em cortes que prendem nos primeiros segundos.",
       how2t: "Distribuição", how2d: "Publico na hora certa e nas plataformas certas: Reels, TikTok e Shorts.",
@@ -113,7 +121,7 @@ const CONTENT = {
         ["How does the free clip work?", "Send me a video and I'll send back an edited clip, no strings attached, so you can see the quality first."],
         ["Do you take on large projects?", "Yes. For bigger operations, I work together with Komp, my partner company."],
       ],
-      statsEyebrow: "MY PAGE · KINGSMAN CLUB", statsTitle: "RESULTS I GENERATED WITH MY PAGE",
+      viralsLabel: "CLIPS THAT WENT VIRAL ON THE PAGE", statsEyebrow: "MY PAGE · KINGSMAN CLUB", statsTitle: "RESULTS I GENERATED WITH MY PAGE",
       howEyebrow: "WHAT I DO", howTitle: "FROM CLIP TO VIRAL",
       how1t: "Cut", how1d: "I find the strongest moments in your content and turn them into clips that hook viewers in the first seconds.",
       how2t: "Distribution", how2d: "Posted at the right time on the right platforms: Reels, TikTok and Shorts.",
