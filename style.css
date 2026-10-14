@@ -53,6 +53,16 @@ body::before {
 .loader__bar { width: 140px; height: 2px; background: var(--line); overflow: hidden; }
 .loader__bar span { display: block; height: 100%; width: 0; background: var(--accent); }
 
+/* foto de perfil (no lugar do logo) */
+.avatar {
+  display: grid; place-items: center; overflow: hidden; border-radius: 50%;
+  background: linear-gradient(135deg, #12324d, #0a1520); color: var(--accent);
+  border: 1.5px solid var(--accent); box-shadow: 0 0 14px var(--accent-glow);
+}
+.avatar svg { width: 60%; height: 60%; }
+.nav__logo.avatar { width: 34px; height: 34px; }
+.loader__logo.avatar { width: 96px; height: 96px; }
+
 /* ---------- NAV ---------- */
 .nav {
   position: fixed; top: 18px; left: 50%; transform: translateX(-50%); z-index: 50;

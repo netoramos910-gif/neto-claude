@@ -4,6 +4,9 @@
 // ============================================================
 
 const CONTENT = {
+  // Sua foto (aparece no menu, na abertura e no rodapé). Ex.: "media/perfil.jpg".
+  profile: { photo: "" },
+
   // Vídeos que você editou (faixa "Trabalhos"). Formato vertical (Reels/TikTok).
   //  - name: quem aparece no vídeo / cliente. Deixe "" para não mostrar.
   //  - tag: empresa ou detalhe (ex.: "G4"). Opcional.
