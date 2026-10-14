@@ -10,26 +10,67 @@
   };
 
   // ---------- render ----------
+  // cortes flutuando em órbita ao redor do N, com linhas de luz ligando o N a cada vídeo
   function renderVideos() {
-    const item = (v) => `
-      <button class="reel" data-video="${v.src}" aria-label="${v.name || "Vídeo"}">
+    const vids = CONTENT.videos;
+    const card = (v, i) => `
+      <button class="reel" data-video="${v.src}" data-i="${i}" aria-label="${v.name || "Vídeo"}">
         <video src="${v.src}" poster="${v.poster}" muted loop playsinline preload="none"></video>
         <span class="reel__play">▶</span>
-        ${v.name || v.tag ? `<span class="reel__info"><b>${v.name}</b>${v.tag ? `<small>${v.tag}</small>` : ""}</span>` : ""}
       </button>`;
-    // repete até encher telas largas, depois duplica para o loop infinito
-    let vids = CONTENT.videos;
-    while (vids.length && vids.length < 9) vids = vids.concat(CONTENT.videos);
-    const list = vids.map(item).join("");
-    $("#projects").innerHTML = `<div class="reels__track">${list + list}</div>`;
+    $("#projects").innerHTML = `
+      <svg class="orbit__lines" aria-hidden="true">
+        <defs><linearGradient id="beam" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#e9f6ff"/><stop offset="1" stop-color="#1fb6ff"/></linearGradient></defs>
+        ${vids.map(() => '<line class="orbit__beam"/><line class="orbit__flow"/>').join("")}
+      </svg>
+      <div class="orbit__center"><span class="kmark-wrap"><span class="nmark"></span></span></div>
+      ${vids.map(card).join("")}`;
 
-    // só toca (sem som) o que está aparecendo na tela, para não pesar no celular
-    const io = new IntersectionObserver((entries) => entries.forEach((e) => {
-      const vid = e.target;
-      if (e.isIntersecting) vid.play().catch(() => {}); else vid.pause();
-    }), { threshold: 0.4 });
-    document.querySelectorAll(".reel video").forEach((v) => io.observe(v));
+    const box = $("#projects");
+    const cards = [...box.querySelectorAll(".reel")];
+    const beams = [...box.querySelectorAll(".orbit__beam")];
+    const flows = [...box.querySelectorAll(".orbit__flow")];
+    const svg = box.querySelector("svg");
+    const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let angle = -Math.PI / 2, paused = false, last = performance.now();
+    cards.forEach((c) => {
+      c.addEventListener("mouseenter", () => (paused = true));
+      c.addEventListener("mouseleave", () => (paused = false));
+    });
+
+    function frame(now) {
+      const dt = Math.min(now - last, 50); last = now;
+      if (!paused && !still) angle += dt * 0.00012;
+      const w = box.clientWidth, h = box.clientHeight;
+      const cw = cards[0] ? cards[0].offsetWidth : 0, ch = cards[0] ? cards[0].offsetHeight : 0;
+      const cx = w / 2, cy = h / 2;
+      const rx = Math.max(w / 2 - cw / 2 - 6, 60), ry = Math.max(h / 2 - ch / 2 - 6, 60);
+      svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
+      box.querySelector("#beam").setAttribute("x1", cx); box.querySelector("#beam").setAttribute("y1", cy);
+      cards.forEach((c, i) => {
+        const t = angle + (i * 2 * Math.PI) / cards.length;
+        const x = cx + rx * Math.cos(t), y = cy + ry * Math.sin(t);
+        const depth = (Math.sin(t) + 1) / 2; // 0 = atrás (em cima), 1 = na frente (embaixo)
+        c.style.transform = `translate(${x - cw / 2}px, ${y - ch / 2}px) scale(${0.82 + depth * 0.22})`;
+        c.style.zIndex = 10 + Math.round(depth * 10);
+        c.style.opacity = 0.6 + depth * 0.4;
+        [beams[i], flows[i]].forEach((l) => {
+          l.setAttribute("x1", cx); l.setAttribute("y1", cy); l.setAttribute("x2", x); l.setAttribute("y2", y);
+        });
+      });
+      box.querySelector("#beam").setAttribute("x2", cx + rx); box.querySelector("#beam").setAttribute("y2", cy);
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+
+    // toca os vídeos (sem som) só quando a seção está na tela
+    const io = new IntersectionObserver(([e]) => cards.forEach((c) => {
+      const v = c.querySelector("video");
+      if (e.isIntersecting) v.play().catch(() => {}); else v.pause();
+    }), { threshold: 0.2 });
+    io.observe(box);
   }
+
 
   function renderCreators() {
     const item = (c, i) => `
