@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Seu Nome — Motion Design</title>
+  <meta name="description" content="Portfólio de motion design e edição de vídeo." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Tela de abertura -->
+  <div class="loader" id="loader">
+    <div class="loader__logo">S</div>
+    <div class="loader__name" data-i18n="studio">SEU STUDIO</div>
+    <div class="loader__bar"><span></span></div>
+  </div>
+
+  <!-- Navegação flutuante -->
+  <nav class="nav" id="nav">
+    <a href="#top" class="nav__logo" aria-label="Início">S</a>
+    <button class="nav__btn nav__dot" id="themeBtn" aria-label="Alternar brilho"></button>
+    <button class="nav__btn nav__lang" id="langBtn" aria-label="Trocar idioma">EN</button>
+    <button class="nav__btn nav__menu" id="menuBtn" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="menu" id="menu">
+    <a href="#work" data-i18n="menuWork">Trabalhos</a>
+    <a href="#why" data-i18n="menuWhy">Diferenciais</a>
+    <a href="#creators" data-i18n="menuCreators">Clientes</a>
+    <a href="#contact" data-i18n="menuContact">Fale Comigo</a>
+  </div>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__bg"></div>
+      <div class="hero__light"></div>
+      <span class="tag reveal"><i></i><span data-i18n="heroTag">MOTION & VFX STUDIO</span></span>
+      <h1 class="hero__title" id="heroTitle" data-i18n="heroTitle">MOTION DESIGN</h1>
+      <p class="hero__text reveal" data-i18n="heroText">Animações sob medida para marcas e criadores que querem ser lembrados. Intros, vinhetas e transições pensadas quadro a quadro.</p>
+      <div class="hero__actions reveal">
+        <a href="#work" class="btn btn--primary" data-i18n="heroCta">VER MEU TRABALHO ↓</a>
+        <a href="#contact" class="btn btn--ghost" data-i18n="heroCta2">Pedir um orçamento</a>
+      </div>
+      <span class="hero__scroll">SCROLL</span>
+    </section>
+
+    <!-- PROJETOS -->
+    <section class="section" id="work">
+      <div class="eyebrow reveal"><span>01</span> · <span data-i18n="workEyebrow">TRABALHOS SELECIONADOS</span></div>
+      <h2 class="title reveal" data-i18n="workTitle">PROJETOS DE MOTION</h2>
+      <div class="grid" id="projects"></div>
+    </section>
+
+    <!-- DIFERENCIAIS -->
+    <section class="section" id="why">
+      <div class="side-label reveal">02</div>
+      <h2 class="title reveal" data-i18n="whyTitle">POR QUE ME ESCOLHER</h2>
+      <p class="subtitle reveal" data-i18n="whySub">FEITO PARA IMPACTO VISUAL</p>
+      <div class="cards" id="features"></div>
+    </section>
+
+    <!-- CRIADORES -->
+    <section class="section" id="creators">
+      <div class="eyebrow eyebrow--center reveal" data-i18n="creatorsEyebrow">CRIADORES QUE CONFIARAM</div>
+      <div class="marquee"><div class="marquee__track" id="creatorsTrack"></div></div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta">
+      <h2 class="title reveal" data-i18n="ctaTitle">PRONTO PARA ELEVAR SUA MARCA?</h2>
+      <p class="muted reveal" data-i18n="ctaText">Vamos criar um motion que faz as pessoas pararem de rolar.</p>
+      <a href="#contact" class="btn btn--primary reveal" data-i18n="ctaBtn">COMEÇAR UM PROJETO</a>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="section contact" id="contact">
+      <div class="eyebrow eyebrow--center reveal" data-i18n="contactEyebrow">CONTATO</div>
+      <h2 class="contact__title reveal"><span data-i18n="contactA">Vamos</span> <em data-i18n="contactB">Conversar</em></h2>
+      <p class="muted reveal" data-i18n="contactText">Tem um projeto em mente? Me chama.</p>
+      <div class="contact__list" id="contacts"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__brand"><span class="nav__logo">S</span> <span data-i18n="studio">SEU STUDIO</span></div>
+    <div class="footer__links">
+      <a href="#work" data-i18n="menuWork">Trabalhos</a>
+      <a href="#why" data-i18n="menuWhy">Diferenciais</a>
+      <a href="#contact" data-i18n="menuContact">Fale Comigo</a>
+    </div>
+    <p class="footer__copy">© <span id="year"></span> <span data-i18n="studio">SEU STUDIO</span></p>
+  </footer>
+
+  <script src="vendor/gsap.min.js"></script>
+  <script src="vendor/ScrollTrigger.min.js"></script>
+  <script src="content.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
