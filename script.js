@@ -31,11 +31,6 @@
     document.querySelectorAll(".reel video").forEach((v) => io.observe(v));
   }
 
-  function renderFeatures() {
-    $("#features").innerHTML = CONTENT.features[lang].map((f) => `
-      <article class="card"><small>${t("featured")}</small><h3>${f.title}</h3><p>${f.text}</p></article>`).join("");
-  }
-
   function renderCreators() {
     const item = (c, i) => `
       <div class="creator" style="--d:${(i % 4) * -1.1}s">
@@ -105,7 +100,6 @@
     });
     $("#langBtn").textContent = lang === "pt" ? "EN" : "PT";
     splitTitle();
-    renderFeatures();
     renderCreators();
   }
 
@@ -167,11 +161,6 @@
   // faixa de vídeos sobe ao aparecer
   gsap.from("#projects", { y: 60, opacity: 0, duration: .9, ease: "power3.out", scrollTrigger: { trigger: "#projects", start: "top 85%" } });
 
-  // cards: animação refeita quando o idioma muda, então usa batch no container
-  ScrollTrigger.create({
-    trigger: "#features", start: "top 85%", once: true,
-    onEnter: () => gsap.from("#features .card", { y: 50, opacity: 0, stagger: .15, duration: .8, ease: "power3.out" }),
-  });
 
   gsap.from(".contact__item", {
     y: 30, opacity: 0, stagger: .1, duration: .6,

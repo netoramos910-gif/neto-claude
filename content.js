@@ -18,19 +18,6 @@ const CONTENT = {
     { src: "media/videos/video-6625.mp4", poster: "media/videos/video-6625.jpg", name: "", tag: "" },
   ],
 
-  features: {
-    pt: [
-      { title: "ACABAMENTO DE CINEMA", text: "Cor, contraste e composição ajustados como numa cena de filme. Cada entrega passa por um tratamento final cuidadoso." },
-      { title: "MOTION COM IDENTIDADE", text: "Sua tipografia, suas cores e seu tom de voz definem como tudo se move. Nada de animação genérica." },
-      { title: "RITMO & SINCRONIA", text: "Cortes e transições casados com a trilha e o som. É esse encaixe que prende quem está assistindo." },
-    ],
-    en: [
-      { title: "CINEMATIC FINISH", text: "Color, contrast and composition tuned like a film scene. Every delivery gets a careful finishing pass." },
-      { title: "MOTION WITH IDENTITY", text: "Your typography, colors and voice define how everything moves. No generic animation." },
-      { title: "RHYTHM & SYNC", text: "Cuts and transitions locked to the music and sound design. That fit is what keeps people watching." },
-    ],
-  },
-
   // Cases: pessoas e empresas que você já atendeu.
   //  - followers: número de seguidores (ex.: "12M"). Deixe "" para esconder.
   //  - video: caminho de um vídeo (ex.: "media/cases/g4.mp4") ou link. Deixe "" se não tiver.
@@ -56,24 +43,22 @@ const CONTENT = {
   i18n: {
     pt: {
       studio: "SEU STUDIO",
-      menuWork: "Trabalhos", menuWhy: "Diferenciais", menuCreators: "Cases", menuContact: "Fale Comigo",
+      menuWork: "Trabalhos", menuCreators: "Cases", menuContact: "Fale Comigo",
       heroTag: "CORTES · EDIÇÃO · ANIMAÇÃO", heroTitle: "VIRALIZE",
       heroText: "Cortes e edições feitos para prender a atenção nos primeiros segundos e fazer o seu conteúdo rodar nas redes.",
       heroCta: "VER MEU TRABALHO ↓", heroCta2: "Pedir um orçamento",
       workEyebrow: "TRABALHOS SELECIONADOS", workTitle: "FEITO POR NÓS",
-      whyTitle: "POR QUE ME ESCOLHER", whySub: "FEITO PARA IMPACTO VISUAL", featured: "DESTAQUE",
       creatorsEyebrow: "CASES", creatorsTitle: "QUEM JÁ CONFIOU NO MEU TRABALHO", followers: "seguidores", watch: "Ver vídeo",
       ctaTitle: "PRONTO PARA ELEVAR SUA MARCA?", ctaText: "Vamos criar um motion que faz as pessoas pararem de rolar.", ctaBtn: "COMEÇAR UM PROJETO",
       contactEyebrow: "CONTATO", contactA: "Vamos", contactB: "Conversar", contactText: "Tem um projeto em mente? Me chama.",
     },
     en: {
       studio: "YOUR STUDIO",
-      menuWork: "Work", menuWhy: "Why me", menuCreators: "Cases", menuContact: "Contact",
+      menuWork: "Work", menuCreators: "Cases", menuContact: "Contact",
       heroTag: "CLIPS · EDITING · ANIMATION", heroTitle: "GO VIRAL",
       heroText: "Clips and edits built to hook viewers in the first seconds and make your content spread across social media.",
       heroCta: "SEE MY WORK ↓", heroCta2: "Request a quote",
       workEyebrow: "SELECTED WORKS", workTitle: "MADE BY US",
-      whyTitle: "WHY CHOOSE ME", whySub: "BUILT FOR VISUAL IMPACT", featured: "FEATURED",
       creatorsEyebrow: "CASES", creatorsTitle: "WHO HAS TRUSTED MY WORK", followers: "followers", watch: "Watch video",
       ctaTitle: "READY TO ELEVATE YOUR BRAND?", ctaText: "Let's create motion that makes people stop scrolling.", ctaBtn: "START A PROJECT",
       contactEyebrow: "CONTACT", contactA: "Let's", contactB: "Talk", contactText: "Got a project in mind? Reach out.",
