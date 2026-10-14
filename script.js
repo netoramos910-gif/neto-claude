@@ -123,7 +123,9 @@
   // foto de perfil: usa a imagem de CONTENT.profile.photo ou um ícone neutro
   const PERSON = '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z"/></svg>';
   document.querySelectorAll("[data-avatar]").forEach((el) => {
-    el.innerHTML = CONTENT.profile && CONTENT.profile.photo ? `<img src="${CONTENT.profile.photo}" alt="" />` : PERSON;
+    const pr = CONTENT.profile || {};
+    el.innerHTML = pr.photo ? `<img src="${pr.photo}" alt="" />`
+      : pr.initials ? `<span class="monogram">${pr.initials}</span>` : PERSON;
   });
 
   // empresa parceira: link e logo vêm de CONTENT.partner

@@ -60,6 +60,13 @@ body::before {
   border: 1.5px solid var(--accent); box-shadow: 0 0 14px var(--accent-glow);
 }
 .avatar svg { width: 60%; height: 60%; }
+.monogram {
+  font: 600 calc(var(--s, 34px) * .42)/1 var(--display); letter-spacing: -.02em; font-style: italic;
+  background: linear-gradient(180deg, #ffffff 30%, var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent;
+  transform: translateX(-1px);
+}
+.loader__logo.avatar { --s: 96px; }
+.nav__logo.avatar { --s: 34px; }
 .nav__logo.avatar { width: 34px; height: 34px; }
 .loader__logo.avatar { width: 96px; height: 96px; }
 
