@@ -20,7 +20,7 @@
       </button>`;
     $("#projects").innerHTML = `
       <svg class="orbit__lines" aria-hidden="true">
-        <defs><linearGradient id="beam" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#e9f6ff"/><stop offset="1" stop-color="#1fb6ff"/></linearGradient></defs>
+        <defs><linearGradient id="beam" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff8ee"/><stop offset="1" stop-color="#d9c8ad"/></linearGradient></defs>
         ${vids.map(() => '<line class="orbit__beam"/><line class="orbit__flow"/>').join("")}
       </svg>
       <div class="orbit__center"><span class="kmark-wrap"><span class="nmark"></span></span></div>
@@ -178,7 +178,9 @@
 
   function splitTitle() {
     const el = $("#heroTitle");
-    el.innerHTML = [...el.textContent].map((ch) => `<span class="ch">${ch === " " ? "&nbsp;" : ch}</span>`).join("");
+    // letra por letra para a animação, mas cada palavra fica inteira na quebra de linha
+    el.innerHTML = el.textContent.trim().split(/\s+/).map((w) =>
+      `<span class="word">${[...w].map((ch) => `<span class="ch">${ch}</span>`).join("")}</span>`).join(" ");
   }
 
   // ---------- interações ----------

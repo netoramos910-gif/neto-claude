@@ -4,7 +4,7 @@
 // ============================================================
 
 const CONTENT = {
-  // Sua marca no menu, na abertura e no rodapé: o "N" brilhante (media/n-mark.svg).
+  // Sua marca no menu, na abertura e no rodapé: o "NR" brilhante (media/nr-mark.png).
   //  - photo: coloque uma foto (ex.: "media/perfil-rosto.jpg") se preferir foto no lugar do N.
   profile: { photo: "" },
 
