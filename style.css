@@ -226,6 +226,7 @@ body::before {
 }
 .creator b { display: block; font-size: 15px; }
 .creator b::after { content: " ✓"; color: var(--accent); }
+.creator em { display: block; font-style: normal; font-size: 11px; color: var(--accent); letter-spacing: .02em; }
 .creator span { font-size: 12px; color: var(--muted); }
 
 /* modal de vídeo */

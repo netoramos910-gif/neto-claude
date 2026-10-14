@@ -32,11 +32,15 @@ const CONTENT = {
   //  - followers: número de seguidores (ex.: "12M"). Deixe "" para esconder.
   //  - video: caminho de um vídeo (ex.: "media/cases/g4.mp4") ou link. Deixe "" se não tiver.
   //  - logo: true para imagens de logo (mostra a imagem inteira, sem cortar).
+  //  - role: cargo ou descrição curta embaixo do nome (opcional).
   creators: [
     { name: "Nikolas Ferreira", followers: "23,3M", avatar: "media/cases/nikolas-ferreira.jpg", video: "", color: "#22c55e" },
     { name: "Vitor Lelis",      followers: "1,6M", avatar: "media/cases/vitor-lelis.jpg",      video: "", color: "#1fb6ff" },
     { name: "Alfredo Soares",   followers: "1,7M", avatar: "media/cases/alfredo-soares.jpg",   video: "", color: "#6c5ce7" },
     { name: "G4",               followers: "3,2M", avatar: "media/cases/g4.jpg",               video: "", color: "#0b1f3a", logo: true },
+    { name: "William Naor",     followers: "", avatar: "media/cases/william.jpg",          video: "", color: "#1fb6ff", role: "Fundador da Loovi" },
+    { name: "Sermota",          followers: "", avatar: "media/cases/sermota.jpg",          video: "", color: "#c9822b", role: "Influenciador · TikTok" },
+    { name: "Alessandro Cunha", followers: "", avatar: "media/cases/alessandro-cunha.jpg", video: "", color: "#14a3a3", role: "" },
   ],
 
   contacts: [

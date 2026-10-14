@@ -37,6 +37,7 @@
           ${c.video ? `<button class="creator__play" data-video="${c.video}" aria-label="${t("watch")}: ${c.name}">▶</button>` : ""}
         </div>
         <b>${c.name}</b>
+        ${c.role ? `<em>${c.role}</em>` : ""}
         ${c.followers ? `<span>${c.followers} ${t("followers")}</span>` : ""}
       </div>`;
     // repete a lista até encher a tela e duplica para o loop infinito do carrossel
