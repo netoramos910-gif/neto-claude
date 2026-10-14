@@ -13,6 +13,13 @@ const CONTENT = {
     { src: "media/videos/video-6637.mp4", poster: "media/videos/video-6637.jpg", name: "", tag: "" },
     { src: "media/videos/video-6638.mp4", poster: "media/videos/video-6638.jpg", name: "", tag: "" },
     { src: "media/videos/video-6639.mp4", poster: "media/videos/video-6639.jpg", name: "", tag: "" },
+    { src: "media/videos/video-6627.mp4", poster: "media/videos/video-6627.jpg", name: "", tag: "" },
+    { src: "media/videos/video-6628.mp4", poster: "media/videos/video-6628.jpg", name: "", tag: "" },
+    { src: "media/videos/video-6629.mp4", poster: "media/videos/video-6629.jpg", name: "", tag: "" },
+    { src: "media/videos/video-6630.mp4", poster: "media/videos/video-6630.jpg", name: "", tag: "" },
+    { src: "media/videos/video-6632.mp4", poster: "media/videos/video-6632.jpg", name: "", tag: "" },
+    { src: "media/videos/video-6626.mp4", poster: "media/videos/video-6626.jpg", name: "", tag: "" },
+    { src: "media/videos/video-6625.mp4", poster: "media/videos/video-6625.jpg", name: "", tag: "" },
   ],
 
   features: {
