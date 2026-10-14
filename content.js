@@ -63,7 +63,7 @@ const CONTENT = {
   // Textos da página em português (pt) e inglês (en).
   i18n: {
     pt: {
-      studio: "NETO RAMOS × KOMP",
+      studio: "NETO RAMOS",
       menuWork: "Cortes", menuCreators: "Cases", menuContact: "Contato",
       heroTag: "DISPONÍVEL PARA NOVOS PROJETOS", heroTitle: "CORTES VIRAIS",
       heroText: "Estratégia de distribuição em cortes virais para empresários, políticos, especialistas e grandes marcas que querem alcançar milhões de pessoas.",
@@ -96,7 +96,7 @@ const CONTENT = {
       contactEyebrow: "CONTATO", contactA: "Vamos", contactB: "Conversar", contactText: "Tem um projeto em mente? Me chama.",
     },
     en: {
-      studio: "NETO RAMOS × KOMP",
+      studio: "NETO RAMOS",
       menuWork: "Clips", menuCreators: "Cases", menuContact: "Contact",
       heroTag: "AVAILABLE FOR NEW PROJECTS", heroTitle: "VIRAL CLIPS",
       heroText: "A viral clip distribution strategy for entrepreneurs, politicians, experts and major brands that want to reach millions of people.",
