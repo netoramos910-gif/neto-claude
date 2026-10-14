@@ -9,7 +9,7 @@ const CONTENT = {
 
   // Empresa parceira (aparece no botão do topo e no bloco antes do rodapé).
   //  - url: link do site ou Instagram da empresa. Deixe "" enquanto não tiver.
-  partner: { name: "Komp", url: "", logo: "" },
+  partner: { name: "Komp", url: "https://kompbr.com/", logo: "" },
 
   // Vídeos que você editou (faixa "Trabalhos"). Formato vertical (Reels/TikTok).
   //  - name: quem aparece no vídeo / cliente. Deixe "" para não mostrar.
