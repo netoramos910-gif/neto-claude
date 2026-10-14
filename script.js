@@ -126,19 +126,23 @@
     modal.classList.add("open");
   });
 
+  // cortes virais girando num anel 3D, com as views em destaque em cada vídeo
   function renderVirals() {
     const fmtM = (n) => n.toLocaleString(lang === "pt" ? "pt-BR" : "en-US", { maximumFractionDigits: 1 }) + "M";
-    $("#viralsRow").innerHTML = (CONTENT.virals || []).map((v) => `
-      <button class="viral" data-video="${v.src}" aria-label="${fmtM(v.views)} views">
+    const list = CONTENT.virals || [];
+    const n = list.length;
+    $("#viralsRow").innerHTML = `<div class="ring__spin" style="--n:${n}">${list.map((v, i) => `
+      <button class="viral" style="--i:${i}" data-video="${v.src}" aria-label="${fmtM(v.views)} views">
         <video src="${v.src}" poster="${v.poster}" muted loop playsinline preload="none"></video>
         <span class="viral__views"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>${fmtM(v.views)}</span>
-      </button>`).join("");
-    const io = new IntersectionObserver((es) => es.forEach((e) => {
-      const vid = e.target.querySelector("video");
+      </button>`).join("")}</div>`;
+    const ring = $("#viralsRow");
+    const io = new IntersectionObserver(([e]) => ring.querySelectorAll("video").forEach((vid) => {
       if (e.isIntersecting) vid.play().catch(() => {}); else vid.pause();
-    }), { threshold: 0.5 });
-    document.querySelectorAll(".viral").forEach((el) => io.observe(el));
+    }), { threshold: 0.2 });
+    io.observe(ring);
   }
+
 
   function renderSteps() {
     $("#stepsList").innerHTML = t("steps").map(([title, text], i) => `
@@ -297,8 +301,7 @@
   ScrollTrigger.create({ trigger: "#faqList", start: "top 88%", once: true,
     onEnter: () => gsap.from("#faqList .faq__item", { y: 20, opacity: 0, stagger: .08, duration: .5 }) });
 
-  ScrollTrigger.create({ trigger: "#viralsRow", start: "top 88%", once: true,
-    onEnter: () => gsap.from("#viralsRow .viral", { y: 40, opacity: 0, stagger: .1, duration: .7, ease: "power3.out" }) });
+  gsap.from("#viralsRow .ring__spin", { scale: .6, opacity: 0, duration: 1.1, ease: "power3.out", scrollTrigger: { trigger: "#viralsRow", start: "top 85%" } });
 
   gsap.from(".contact__item", {
     y: 30, opacity: 0, stagger: .1, duration: .6,

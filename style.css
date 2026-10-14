@@ -274,25 +274,41 @@ body::before {
 .virals { margin-top: 36px; }
 .virals__label { display: flex; align-items: center; gap: 12px; font-size: 11px; font-weight: 600; letter-spacing: .25em; color: var(--muted); }
 .virals__label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
-.virals__row {
-  display: grid; grid-auto-flow: column; grid-auto-columns: minmax(150px, 1fr); gap: 14px;
-  margin-top: 18px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px;
-  scrollbar-width: none;
+.ring {
+  --cw: clamp(118px, 30vw, 170px);
+  --r: calc(var(--cw) * 1.45);
+  position: relative; height: calc(var(--cw) * 16 / 9 + 90px); margin-top: 24px;
+  perspective: 1100px; perspective-origin: 50% 30%;
+  overflow-x: clip;
+  display: grid; place-items: center;
 }
-.virals__row::-webkit-scrollbar { display: none; }
+.ring::after {
+  content: ""; position: absolute; left: 50%; bottom: 6px; width: calc(var(--r) * 2.3); height: 70px; transform: translateX(-50%);
+  background: radial-gradient(ellipse at center, rgba(31, 182, 255, .35), transparent 70%); filter: blur(8px); pointer-events: none;
+}
+.ring__spin {
+  position: relative; width: var(--cw); aspect-ratio: 9 / 16;
+  transform-style: preserve-3d; animation: ringspin 26s linear infinite;
+}
+@media (hover: hover) { .ring:hover .ring__spin { animation-play-state: paused; } }
+@keyframes ringspin { from { transform: rotateX(-6deg) rotateY(0deg); } to { transform: rotateX(-6deg) rotateY(-360deg); } }
 .viral {
-  position: relative; aspect-ratio: 9 / 16; border-radius: 16px; overflow: hidden; padding: 0; cursor: pointer;
-  scroll-snap-align: start; border: 1px solid rgba(31, 182, 255, .25); background: var(--card); color: var(--text); font: inherit;
-  transition: transform .3s, border-color .3s, box-shadow .3s;
+  position: absolute; inset: 0; border-radius: 16px; overflow: hidden; padding: 0; cursor: pointer;
+  transform: rotateY(calc(var(--i) * 360deg / var(--n))) translateZ(var(--r));
+  border: 1px solid rgba(31, 182, 255, .4); background: #000; color: var(--text); font: inherit;
+  box-shadow: 0 0 26px rgba(31, 182, 255, .25);
 }
 .viral video { position: absolute; inset: 0; }
-.viral:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: 0 0 28px var(--accent-glow); }
+.viral:hover { border-color: var(--accent); box-shadow: 0 0 34px var(--accent-glow); }
 .viral__views {
-  position: absolute; left: 10px; bottom: 10px; display: inline-flex; align-items: center; gap: 5px;
-  padding: 6px 10px 6px 8px; border-radius: 999px; font-weight: 700; font-size: 13px; font-variant-numeric: tabular-nums;
-  background: rgba(0, 0, 0, .55); backdrop-filter: blur(6px); border: 1px solid rgba(255, 255, 255, .18);
+  position: absolute; left: 50%; bottom: 10px; transform: translateX(-50%);
+  display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
+  padding: 7px 14px 7px 11px; border-radius: 999px;
+  font: 600 clamp(18px, 4.6vw, 24px)/1 var(--display); letter-spacing: .02em; font-variant-numeric: tabular-nums;
+  color: #fff; background: rgba(31, 182, 255, .9);
+  box-shadow: 0 0 22px var(--accent-glow), 0 6px 18px rgba(0,0,0,.5);
 }
-.viral__views svg { width: 13px; height: 13px; color: var(--accent); }
+.viral__views svg { width: .7em; height: .7em; }
 
 /* como funciona: desenhos em linha que se desenham ao aparecer */
 .how__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 44px; }
@@ -503,6 +519,7 @@ body::before {
 
 @media (prefers-reduced-motion: reduce) {
   .kmark, .nmark, .kmark-wrap, .tag--live i { animation: none; }
+  .ring__spin { animation-duration: 70s; }
   .how__step .ln, .how__step .playhead, .how__step .blade-a, .how__step .blade-b, .how__step .flow, .how__step .tile, .how__step .dot { animation: none !important; transition: none; }
   /* com "reduzir movimento" os carrosséis continuam passando, só mais devagar */
   .creator { animation: none; }
@@ -519,8 +536,4 @@ body::before {
 @media (max-width: 520px) {
   .steps__list { grid-template-columns: 1fr; }
   .step { grid-template-columns: auto 1fr; align-items: start; }
-}
-
-@media (max-width: 640px) {
-  .virals__row { grid-auto-columns: 46%; margin-inline: -16px; padding-inline: 16px; scroll-padding-inline: 16px; }
 }
