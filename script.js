@@ -17,7 +17,10 @@
         <span class="reel__play">▶</span>
         ${v.name || v.tag ? `<span class="reel__info"><b>${v.name}</b>${v.tag ? `<small>${v.tag}</small>` : ""}</span>` : ""}
       </button>`;
-    const list = CONTENT.videos.map(item).join("");
+    // repete até encher telas largas, depois duplica para o loop infinito
+    let vids = CONTENT.videos;
+    while (vids.length && vids.length < 9) vids = vids.concat(CONTENT.videos);
+    const list = vids.map(item).join("");
     $("#projects").innerHTML = `<div class="reels__track">${list + list}</div>`;
 
     // só toca (sem som) o que está aparecendo na tela, para não pesar no celular
