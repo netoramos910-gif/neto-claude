@@ -126,6 +126,16 @@
     modal.classList.add("open");
   });
 
+  function renderSteps() {
+    $("#stepsList").innerHTML = t("steps").map(([title, text], i) => `
+      <li class="step reveal-item"><span class="step__num">${String(i + 1).padStart(2, "0")}</span><div><h3>${title}</h3><p>${text}</p></div></li>`).join("");
+  }
+
+  function renderFaq() {
+    $("#faqList").innerHTML = t("faq").map(([q, a]) => `
+      <details class="faq__item"><summary>${q}<span class="faq__icon" aria-hidden="true"></span></summary><p>${a}</p></details>`).join("");
+  }
+
   function renderContacts() {
     $("#contacts").innerHTML = CONTENT.contacts.map((c) => `
       <a class="contact__item reveal-item" href="${c.href}" target="_blank" rel="noopener">
@@ -142,6 +152,8 @@
     $("#langBtn").textContent = lang === "pt" ? "EN" : "PT";
     splitTitle();
     renderCreators();
+    renderSteps();
+    renderFaq();
     if (typeof renderStats === "function" && $("#statsGrid").children.length) renderStatsLabels();
   }
 
@@ -263,6 +275,12 @@
   // faixa de vídeos sobe ao aparecer
   gsap.from("#projects", { y: 60, opacity: 0, duration: .9, ease: "power3.out", scrollTrigger: { trigger: "#projects", start: "top 85%" } });
 
+
+  gsap.from(".hero__mark", { scale: .5, opacity: 0, duration: .9, ease: "back.out(2)", delay: 2.6 });
+  ScrollTrigger.create({ trigger: "#stepsList", start: "top 85%", once: true,
+    onEnter: () => gsap.from("#stepsList .step", { x: -30, opacity: 0, stagger: .15, duration: .7, ease: "power3.out" }) });
+  ScrollTrigger.create({ trigger: "#faqList", start: "top 88%", once: true,
+    onEnter: () => gsap.from("#faqList .faq__item", { y: 20, opacity: 0, stagger: .08, duration: .5 }) });
 
   gsap.from(".contact__item", {
     y: 30, opacity: 0, stagger: .1, duration: .6,

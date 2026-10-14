@@ -47,7 +47,8 @@
     <section class="hero">
       <div class="hero__bg"></div>
       <div class="hero__light"></div>
-      <span class="tag reveal"><i></i><span data-i18n="heroTag">CORTES VIRAIS · DISTRIBUIÇÃO</span></span>
+      <div class="hero__mark reveal"><span class="kmark-wrap"><span class="nmark"></span></span></div>
+      <span class="tag tag--live reveal"><i></i><span data-i18n="heroTag">DISPONÍVEL PARA NOVOS PROJETOS</span></span>
       <h1 class="hero__title" id="heroTitle" data-i18n="heroTitle">CORTES VIRAIS</h1>
       <p class="hero__text reveal" data-i18n="heroText">Estratégia de distribuição em cortes virais para empresários, especialistas e grandes marcas que querem alcançar milhões de pessoas.</p>
       <div class="hero__actions reveal">
@@ -73,8 +74,8 @@
 
     <!-- COMO FUNCIONA (ilustrações em linha que se desenham) -->
     <section class="section how" id="how">
-      <div class="eyebrow reveal" data-i18n="howEyebrow">COMO FUNCIONA</div>
-      <h2 class="title reveal" data-i18n="howTitle">COMO EU FAÇO SEU CONTEÚDO VIRALIZAR</h2>
+      <div class="eyebrow reveal" data-i18n="howEyebrow">O QUE EU FAÇO</div>
+      <h2 class="title reveal" data-i18n="howTitle">DO CORTE AO VIRAL</h2>
       <div class="how__grid">
         <article class="how__step">
           <svg class="doodle doodle--cut" viewBox="0 0 200 130" aria-hidden="true">
@@ -127,6 +128,13 @@
       </div>
     </section>
 
+    <!-- PASSO A PASSO -->
+    <section class="section steps" id="steps">
+      <div class="eyebrow reveal" data-i18n="stepsEyebrow">COMO FUNCIONA</div>
+      <h2 class="title reveal" data-i18n="stepsTitle">SIMPLES E RÁPIDO</h2>
+      <ol class="steps__list" id="stepsList"></ol>
+    </section>
+
     <!-- NÚMEROS -->
     <section class="section stats" id="stats">
       <div class="stats__head reveal">
@@ -140,10 +148,24 @@
       <a class="stats__page" id="statsPage" target="_blank" rel="noopener" hidden></a>
     </section>
 
+    <!-- PERGUNTAS FREQUENTES -->
+    <section class="section faq" id="faq">
+      <div class="faq__head">
+        <div>
+          <div class="eyebrow reveal" data-i18n="faqEyebrow">PERGUNTAS FREQUENTES</div>
+          <h2 class="title reveal" data-i18n="faqTitle">TUDO O QUE VOCÊ PRECISA SABER</h2>
+        </div>
+        <a href="#contact" class="btn btn--primary btn--sm reveal" data-i18n="faqBtn">FAZER UMA PERGUNTA</a>
+      </div>
+      <div class="faq__list" id="faqList"></div>
+    </section>
+
     <!-- CTA -->
     <section class="section cta">
-      <h2 class="title reveal" data-i18n="ctaTitle">PRONTO PARA VIRALIZAR?</h2>
-      <a href="#contact" class="btn btn--primary reveal" data-i18n="ctaBtn">COMEÇAR UM PROJETO</a>
+      <div class="eyebrow eyebrow--center reveal" data-i18n="ctaEyebrow">PRONTO PARA VIRALIZAR?</div>
+      <h2 class="cta__title reveal"><span data-i18n="ctaTitleA">Seu primeiro corte é</span> <em data-i18n="ctaTitleB">por minha conta.</em></h2>
+      <p class="muted reveal" data-i18n="ctaText">Mande um vídeo e receba um corte editado, sem compromisso.</p>
+      <a href="#contact" class="btn btn--primary reveal" data-i18n="ctaBtn">PEDIR CORTE GRÁTIS</a>
     </section>
 
     <!-- CONTATO -->
