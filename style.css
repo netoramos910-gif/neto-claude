@@ -494,7 +494,7 @@ body::before {
 .partner__line { display: inline-flex; align-items: baseline; gap: .45em; flex-wrap: wrap; color: var(--muted); }
 /* "KOMP" escrito em destaque, no azul da marca, com brilho */
 .komp-word {
-  font: 700 1.55em/1 var(--display); letter-spacing: .14em;
+  font: 700 1.6em/1 var(--display); letter-spacing: .02em;
   background: linear-gradient(115deg, #0096d6 0 40%, #e6f8ff 50%, #0096d6 60% 100%);
   background-size: 320% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
   filter: drop-shadow(0 0 12px rgba(31, 182, 255, .55));
