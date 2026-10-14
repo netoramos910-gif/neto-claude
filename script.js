@@ -10,18 +10,22 @@
   };
 
   // ---------- render ----------
-  function renderMedia(src, color) {
-    if (!src) return `<div class="project__placeholder" style="--c:${color}"></div>`;
-    if (/\.(mp4|webm|mov)$/i.test(src)) return `<video src="${src}" muted loop playsinline autoplay></video>`;
-    return `<img src="${src}" alt="" loading="lazy" />`;
-  }
+  function renderVideos() {
+    const item = (v) => `
+      <button class="reel" data-video="${v.src}" aria-label="${v.name || "Vídeo"}">
+        <video src="${v.src}" poster="${v.poster}" muted loop playsinline preload="none"></video>
+        <span class="reel__play">▶</span>
+        ${v.name || v.tag ? `<span class="reel__info"><b>${v.name}</b>${v.tag ? `<small>${v.tag}</small>` : ""}</span>` : ""}
+      </button>`;
+    const list = CONTENT.videos.map(item).join("");
+    $("#projects").innerHTML = `<div class="reels__track">${list + list}</div>`;
 
-  function renderProjects() {
-    $("#projects").innerHTML = CONTENT.projects.map((p) => `
-      <article class="project ${p.size ? "project--" + p.size : ""}">
-        <div class="project__media">${renderMedia(p.media, p.color)}</div>
-        <div class="project__info"><small>${p.tag}</small><h3>${p.title}</h3></div>
-      </article>`).join("");
+    // só toca (sem som) o que está aparecendo na tela, para não pesar no celular
+    const io = new IntersectionObserver((entries) => entries.forEach((e) => {
+      const vid = e.target;
+      if (e.isIntersecting) vid.play().catch(() => {}); else vid.pause();
+    }), { threshold: 0.4 });
+    document.querySelectorAll(".reel video").forEach((v) => io.observe(v));
   }
 
   function renderFeatures() {
@@ -56,7 +60,7 @@
   modal.addEventListener("click", (e) => { if (e.target === modal || e.target.classList.contains("modal__close")) closeModal(); });
   document.addEventListener("keydown", (e) => e.key === "Escape" && closeModal());
   document.addEventListener("click", (e) => {
-    const btn = e.target.closest(".creator__play");
+    const btn = e.target.closest("[data-video]");
     if (!btn) return;
     const src = btn.dataset.video;
     modal.querySelector(".modal__box").innerHTML = /\.(mp4|webm|mov)$/i.test(src)
@@ -102,7 +106,7 @@
   $("#year").textContent = new Date().getFullYear();
 
   // ---------- init ----------
-  renderProjects();
+  renderVideos();
   renderContacts();
   applyLang();
 
@@ -133,11 +137,8 @@
     gsap.from(el, { y: 40, opacity: 0, duration: .8, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 88%" } });
   });
 
-  // projetos entram em cascata
-  gsap.from(".project", {
-    y: 60, opacity: 0, scale: .94, stagger: .08, duration: .8, ease: "power3.out",
-    scrollTrigger: { trigger: "#projects", start: "top 85%" },
-  });
+  // faixa de vídeos sobe ao aparecer
+  gsap.from("#projects", { y: 60, opacity: 0, duration: .9, ease: "power3.out", scrollTrigger: { trigger: "#projects", start: "top 85%" } });
 
   // cards: animação refeita quando o idioma muda, então usa batch no container
   ScrollTrigger.create({

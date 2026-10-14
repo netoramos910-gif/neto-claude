@@ -4,15 +4,15 @@
 // ============================================================
 
 const CONTENT = {
-  // Projetos: "media" pode ser uma imagem (.jpg/.png/.webp) ou vídeo (.mp4).
-  // Deixe vazio ("") para mostrar um bloco colorido de exemplo.
-  projects: [
-    { title: "Lançamento de produto", tag: "3D / Motion", media: "", size: "wide", color: "#1fb6ff" },
-    { title: "Intro para canal",      tag: "Branding",    media: "", size: "",     color: "#e5322d" },
-    { title: "Documentário",          tag: "Edição",      media: "", size: "",     color: "#c9822b" },
-    { title: "Vinheta animada",       tag: "2D",          media: "", size: "tall", color: "#14a3a3" },
-    { title: "Infográfico",           tag: "Data motion", media: "", size: "",     color: "#f5a524" },
-    { title: "Short form",            tag: "Reels",       media: "", size: "wide", color: "#6c5ce7" },
+  // Vídeos que você editou (faixa "Trabalhos"). Formato vertical (Reels/TikTok).
+  //  - name: quem aparece no vídeo / cliente. Deixe "" para não mostrar.
+  //  - tag: empresa ou detalhe (ex.: "G4"). Opcional.
+  videos: [
+    { src: "media/videos/video-6635.mp4", poster: "media/videos/video-6635.jpg", name: "", tag: "" },
+    { src: "media/videos/video-6636.mp4", poster: "media/videos/video-6636.jpg", name: "", tag: "" },
+    { src: "media/videos/video-6637.mp4", poster: "media/videos/video-6637.jpg", name: "", tag: "" },
+    { src: "media/videos/video-6638.mp4", poster: "media/videos/video-6638.jpg", name: "", tag: "" },
+    { src: "media/videos/video-6639.mp4", poster: "media/videos/video-6639.jpg", name: "", tag: "" },
   ],
 
   features: {
