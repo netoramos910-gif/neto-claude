@@ -167,7 +167,6 @@
       const v = t(el.dataset.i18n);
       if (v) el.textContent = v;
     });
-    $("#langBtn").textContent = lang === "pt" ? "EN" : "PT";
     splitTitle();
     renderCreators();
     renderSteps();
@@ -191,8 +190,6 @@
   };
   menuBtn.addEventListener("click", () => toggleMenu(!menu.classList.contains("open")));
   menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => toggleMenu(false)));
-  $("#langBtn").addEventListener("click", () => { lang = lang === "pt" ? "en" : "pt"; applyLang(); });
-  $("#themeBtn").addEventListener("click", () => document.body.classList.toggle("dim"));
   $("#year").textContent = new Date().getFullYear();
 
   // foto de perfil: usa a imagem de CONTENT.profile.photo ou um ícone neutro
