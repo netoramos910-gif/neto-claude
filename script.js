@@ -267,13 +267,33 @@
   gsap.registerPlugin(ScrollTrigger);
   document.body.classList.add("is-loading");
 
-  // abertura
-  const intro = gsap.timeline({ onComplete: () => document.body.classList.remove("is-loading") });
-  intro
+  // abertura estilo "tela de início de jogo": carrega, mostra PRESSIONE START e só entra no site quando a pessoa aperta
+  const startBtn = $("#startBtn");
+  const boot = gsap.timeline();
+  boot
     .from(".loader .avatar", { scale: .7, opacity: 0, filter: "blur(10px)", duration: .8, ease: "power3.out" })
     .from(".loader__name", { opacity: 0, letterSpacing: "1em", duration: .6 }, "-=.3")
-    .to(".loader__bar span", { width: "100%", duration: .9, ease: "power2.inOut" })
-    .to("#loader", { yPercent: -100, duration: .7, ease: "power4.inOut" })
+    .to(".loader__bar span", { width: "100%", duration: 1.1, ease: "power2.inOut" })
+    .add(() => { startBtn.classList.add("is-ready"); startBtn.focus({ preventScroll: true }); });
+
+  let started = false;
+  const start = () => {
+    if (started) return;
+    started = true;
+    boot.progress(1);
+    ["keydown", "wheel", "touchstart"].forEach((ev) => window.removeEventListener(ev, start));
+    clearTimeout(autoStart);
+    intro.play();
+  };
+  startBtn.addEventListener("click", start);
+  ["keydown", "wheel", "touchstart"].forEach((ev) => window.addEventListener(ev, () => { if (startBtn.classList.contains("is-ready")) start(); }, { passive: true }));
+  const autoStart = setTimeout(start, 9000); // se ninguém apertar, entra sozinho
+
+  const intro = gsap.timeline({ paused: true, onComplete: () => document.body.classList.remove("is-loading") });
+  intro
+    .to(".loader__start", { scale: 1.15, opacity: 0, duration: .25 })
+    .to(".loader .avatar", { scale: 6, opacity: 0, filter: "blur(6px)", duration: .6, ease: "power3.in" }, "<")
+    .to("#loader", { opacity: 0, duration: .4 }, "-=.15")
     .from("#nav", { y: -40, opacity: 0, duration: .6 }, "-=.3")
     .from("#heroTitle .ch", { y: 80, opacity: 0, filter: "blur(8px)", stagger: .04, duration: .8, ease: "power3.out" }, "-=.4")
     .from(".hero .reveal", { y: 24, opacity: 0, stagger: .12, duration: .6 }, "-=.5")

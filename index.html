@@ -7,15 +7,18 @@
   <meta name="description" content="Portfólio de motion design e edição de vídeo." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600&family=Manrope:wght@400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <!-- Tela de abertura -->
   <div class="loader" id="loader">
+    <div class="loader__scan" aria-hidden="true"></div>
     <span class="loader__logo avatar" data-avatar></span>
     <div class="loader__name">NETO RAMOS</div>
     <div class="loader__bar"><span></span></div>
+    <button class="loader__start" id="startBtn" type="button">▶ PRESSIONE START</button>
+    <p class="loader__hint">toque ou aperte qualquer tecla</p>
   </div>
 
   <!-- Navegação flutuante -->
@@ -27,8 +30,10 @@
   </nav>
 
   <div class="menu" id="menu">
-    <a href="#work" data-i18n="menuWork">Cortes</a>
+    <a href="#about" data-i18n="menuAbout">Quem sou eu</a>
     <a href="#creators" data-i18n="menuCreators">Cases</a>
+    <a href="#work" data-i18n="menuWork">Cortes</a>
+    <a href="#stats" data-i18n="menuStats">Minha página</a>
     <a href="#contact" data-i18n="menuContact">Contato</a>
   </div>
 
@@ -42,22 +47,24 @@
       <h1 class="hero__title" id="heroTitle" data-i18n="heroTitle">CORTES VIRAIS</h1>
       <p class="hero__text reveal" data-i18n="heroText">Estratégia de distribuição em cortes virais para empresários, políticos, especialistas e grandes marcas que querem alcançar milhões de pessoas.</p>
       <div class="hero__actions reveal">
-        <a href="#work" class="btn btn--primary" data-i18n="heroCta">CONHEÇA MEU TRABALHO ↓</a>
+        <a href="#about" class="btn btn--primary" data-i18n="heroCta">CONHEÇA MEU TRABALHO ↓</a>
       </div>
     </section>
 
-    <!-- PROJETOS -->
-    <section class="section" id="work">
-      <div class="eyebrow reveal"><span>01</span> · <span data-i18n="workEyebrow">TRABALHOS SELECIONADOS</span></div>
-      <h2 class="title reveal" data-i18n="workTitle">CORTES FEITOS POR MIM</h2>
-      <div class="reels" id="projects"></div>
-    </section>
-
-    <!-- CRIADORES -->
-    <section class="section" id="creators">
-      <div class="eyebrow eyebrow--center reveal" data-i18n="creatorsEyebrow">CASES</div>
-      <h2 class="title title--center reveal" data-i18n="creatorsTitle">QUEM JÁ CONFIOU NO MEU TRABALHO</h2>
-      <div class="marquee"><div class="marquee__track" id="creatorsTrack"></div></div>
+    <!-- QUEM SOU EU -->
+    <section class="section about" id="about">
+      <div class="about__photo reveal"><img src="media/sobre.jpg" alt="Neto Ramos" loading="lazy" /></div>
+      <div class="about__copy">
+        <div class="eyebrow reveal" data-i18n="aboutEyebrow">QUEM SOU EU</div>
+        <h2 class="title reveal" data-i18n="aboutTitle">PRAZER, NETO RAMOS.</h2>
+        <p class="about__text reveal" data-i18n="aboutText1">Sou editor e estrategista de cortes virais. Pego vídeos longos de empresários, políticos e especialistas e transformo em cortes que prendem a atenção e rodam nas redes.</p>
+        <p class="about__text reveal" data-i18n="aboutText2">Na minha própria página, a Kingsman Club, os cortes já passaram de 100 milhões de visualizações.</p>
+        <ul class="about__tags reveal">
+          <li data-i18n="aboutTag1">Cortes virais</li>
+          <li data-i18n="aboutTag2">Reels, TikTok e Shorts</li>
+          <li data-i18n="aboutTag3">Estratégia de distribuição</li>
+        </ul>
+      </div>
     </section>
 
     <!-- COMO FUNCIONA (ilustrações em linha que se desenham) -->
@@ -116,11 +123,18 @@
       </div>
     </section>
 
-    <!-- PASSO A PASSO -->
-    <section class="section steps" id="steps">
-      <div class="eyebrow reveal" data-i18n="stepsEyebrow">COMO FUNCIONA</div>
-      <h2 class="title reveal" data-i18n="stepsTitle">SIMPLES E RÁPIDO</h2>
-      <ol class="steps__list" id="stepsList"></ol>
+    <!-- CRIADORES -->
+    <section class="section" id="creators">
+      <div class="eyebrow eyebrow--center reveal" data-i18n="creatorsEyebrow">CASES</div>
+      <h2 class="title title--center reveal" data-i18n="creatorsTitle">QUEM JÁ CONFIOU NO MEU TRABALHO</h2>
+      <div class="marquee"><div class="marquee__track" id="creatorsTrack"></div></div>
+    </section>
+
+    <!-- PROJETOS -->
+    <section class="section" id="work">
+      <div class="eyebrow reveal" data-i18n="workEyebrow">TRABALHOS SELECIONADOS</div>
+      <h2 class="title reveal" data-i18n="workTitle">CORTES FEITOS POR MIM</h2>
+      <div class="reels" id="projects"></div>
     </section>
 
     <!-- NÚMEROS -->
@@ -138,6 +152,13 @@
         <div class="ring" id="viralsRow"></div>
       </div>
       <a class="stats__page" id="statsPage" target="_blank" rel="noopener" hidden></a>
+    </section>
+
+    <!-- PASSO A PASSO -->
+    <section class="section steps" id="steps">
+      <div class="eyebrow reveal" data-i18n="stepsEyebrow">COMO FUNCIONA</div>
+      <h2 class="title reveal" data-i18n="stepsTitle">SIMPLES E RÁPIDO</h2>
+      <ol class="steps__list" id="stepsList"></ol>
     </section>
 
     <!-- PERGUNTAS FREQUENTES -->
@@ -162,8 +183,8 @@
 
     <!-- CONTATO -->
     <section class="section contact" id="contact">
-      <div class="eyebrow eyebrow--center reveal" data-i18n="contactEyebrow">CONTATO</div>
-      <h2 class="contact__title reveal"><span data-i18n="contactA">Vamos</span> <em data-i18n="contactB">Conversar</em></h2>
+      <div class="eyebrow eyebrow--center reveal" data-i18n="contactEyebrow">FALE COMIGO</div>
+      <h2 class="contact__title reveal"><span data-i18n="contactA">Trabalhe</span> <em data-i18n="contactB">comigo</em></h2>
       <p class="muted reveal" data-i18n="contactText">Tem um projeto em mente? Me chama.</p>
       <div class="contact__list" id="contacts"></div>
     </section>
@@ -192,8 +213,9 @@
         <span class="avatar" data-avatar></span>
       </a>
       <nav class="footer__links">
-        <a href="#work" data-i18n="menuWork">Cortes</a>
+        <a href="#about" data-i18n="menuAbout">Quem sou eu</a>
         <a href="#creators" data-i18n="menuCreators">Cases</a>
+        <a href="#work" data-i18n="menuWork">Cortes</a>
         <a href="#contact" data-i18n="menuContact">Contato</a>
         <a href="#partner" data-partner-link>Komp ↗</a>
       </nav>
