@@ -85,10 +85,13 @@ body::before {
   display: block; height: var(--h); width: calc(var(--h) * 455 / 504);
   -webkit-mask: url("media/komp.png") center / contain no-repeat;
           mask: url("media/komp.png") center / contain no-repeat;
-  background: linear-gradient(115deg, var(--accent-deep) 0 42%, var(--accent-light) 50%, var(--accent-deep) 58% 100%);
+  /* K da Komp na cor azul da marca */
+  background: linear-gradient(115deg, #0096d6 0 42%, #e6f8ff 50%, #0096d6 58% 100%);
   background-size: 320% 100%;
   animation: kshine 3.2s ease-in-out infinite;
 }
+.kmark-wrap:has(.kmark) { filter: drop-shadow(0 0 5px rgba(31, 182, 255, .55)); animation-name: kglowBlue; }
+@keyframes kglowBlue { 50% { filter: drop-shadow(0 0 14px rgba(31, 182, 255, .95)); } }
 .nmark {
   -webkit-mask-image: url("media/nr-mark.png");
           mask-image: url("media/nr-mark.png");
