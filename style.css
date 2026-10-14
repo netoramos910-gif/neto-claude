@@ -60,13 +60,6 @@ body::before {
   border: 1.5px solid var(--accent); box-shadow: 0 0 14px var(--accent-glow);
 }
 .avatar svg { width: 60%; height: 60%; }
-.monogram {
-  font: 600 calc(var(--s, 34px) * .42)/1 var(--display); letter-spacing: -.02em; font-style: italic;
-  background: linear-gradient(180deg, #ffffff 30%, var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent;
-  transform: translateX(-1px);
-}
-.loader__logo.avatar { --s: 96px; }
-.nav__logo.avatar { --s: 34px; }
 .nav__logo.avatar { width: 34px; height: 34px; }
 .loader__logo.avatar { width: 96px; height: 96px; }
 
@@ -82,7 +75,7 @@ body::before {
   animation: kglow 2.8s ease-in-out infinite;
 }
 @keyframes kglow { 50% { filter: drop-shadow(0 0 14px rgba(31, 182, 255, .95)); } }
-.kmark {
+.kmark, .nmark {
   --h: 26px;
   display: block; height: var(--h); width: calc(var(--h) * 455 / 504);
   -webkit-mask: url("media/komp.png") center / contain no-repeat;
@@ -91,6 +84,19 @@ body::before {
   background-size: 320% 100%;
   animation: kshine 3.2s ease-in-out infinite;
 }
+.nmark {
+  -webkit-mask-image: url("media/n-mark.svg");
+          mask-image: url("media/n-mark.svg");
+  background: linear-gradient(115deg, #e9f6ff 0 40%, #ffffff 50%, #e9f6ff 60% 100%);
+  background-size: 320% 100%;
+  animation-delay: 1.6s;
+}
+/* N no lugar do círculo: sem borda nem fundo */
+.avatar.avatar--mark { background: none; border: 0; box-shadow: none; border-radius: 0; overflow: visible; }
+.nav__logo.avatar--mark .nmark { --h: 26px; }
+.loader__logo.avatar--mark { width: auto; height: auto; }
+.loader__logo.avatar--mark .nmark { --h: 80px; }
+.footer .nmark { --h: 28px; }
 @keyframes kshine { 0% { background-position: 100% 0; } 55%, 100% { background-position: 0 0; } }
 .footer .kmark { --h: 28px; }
 
@@ -334,7 +340,7 @@ body::before {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .kmark, .kmark-wrap { animation: none; }
+  .kmark, .nmark, .kmark-wrap { animation: none; }
   /* com "reduzir movimento" os carrosséis continuam passando, só mais devagar */
   .creator { animation: none; }
   .marquee__track { animation-duration: 48s; }

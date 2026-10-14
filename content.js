@@ -4,10 +4,9 @@
 // ============================================================
 
 const CONTENT = {
-  // Sua marca no menu, na abertura e no rodapé.
-  //  - initials: monograma (ex.: "NR"). Usado quando "photo" estiver vazio.
-  //  - photo: foto do rosto, se preferir usar foto (ex.: "media/perfil-rosto.jpg").
-  profile: { initials: "NR", photo: "" },
+  // Sua marca no menu, na abertura e no rodapé: o "N" brilhante (media/n-mark.svg).
+  //  - photo: coloque uma foto (ex.: "media/perfil-rosto.jpg") se preferir foto no lugar do N.
+  profile: { photo: "" },
 
   // Empresa parceira (aparece no botão do topo e no bloco antes do rodapé).
   //  - url: link do site ou Instagram da empresa. Deixe "" enquanto não tiver.
