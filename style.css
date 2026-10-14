@@ -380,15 +380,8 @@ body::before {
 .partner__title em { font-style: normal; color: var(--accent); }
 .partner .muted { font-size: 14px; max-width: 46ch; }
 
-/* faixa em movimento */
-.ticker { overflow: hidden; border-block: 1px solid var(--line); padding-block: 18px; margin-top: 40px; }
-.ticker__track { display: flex; align-items: center; gap: 28px; width: max-content; animation: scroll 30s linear infinite; }
-.ticker__track span { font: 600 clamp(20px, 3.4vw, 34px)/1 var(--display); letter-spacing: .04em; white-space: nowrap; }
-.ticker__track span:nth-of-type(odd) { color: transparent; -webkit-text-stroke: 1px rgba(242, 245, 248, .55); }
-.ticker__track i { font-style: normal; color: var(--accent); }
-
 /* footer */
-.footer { padding: 40px max(16px, env(safe-area-inset-right, 0px)) 28px max(16px, env(safe-area-inset-left, 0px)); max-width: 1100px; margin: 0 auto; display: grid; gap: 22px; }
+.footer { border-top: 1px solid var(--line); padding: 40px max(16px, env(safe-area-inset-right, 0px)) 28px max(16px, env(safe-area-inset-left, 0px)); max-width: 1100px; margin: 0 auto; display: grid; gap: 22px; }
 .footer__top { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
 .footer__brand { display: flex; align-items: center; gap: 10px; font-weight: 600; letter-spacing: .06em; }
 .footer__brand .avatar { display: contents; }
@@ -413,7 +406,6 @@ body::before {
 @media (prefers-reduced-motion: reduce) {
   .kmark, .nmark, .kmark-wrap { animation: none; }
   .how__step .ln, .how__step .playhead, .how__step .blade-a, .how__step .blade-b, .how__step .flow, .how__step .tile, .how__step .dot { animation: none !important; transition: none; }
-  .ticker__track { animation-duration: 90s; }
   /* com "reduzir movimento" os carrosséis continuam passando, só mais devagar */
   .creator { animation: none; }
   .marquee__track { animation-duration: 48s; }

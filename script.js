@@ -142,9 +142,6 @@
     $("#langBtn").textContent = lang === "pt" ? "EN" : "PT";
     splitTitle();
     renderCreators();
-    const words = t("ticker") || [];
-    const row = words.map((w) => `<span>${w}</span><i>✦</i>`).join("");
-    $("#ticker").innerHTML = row.repeat(4);
   }
 
   function splitTitle() {
