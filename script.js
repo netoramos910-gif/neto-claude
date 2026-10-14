@@ -270,9 +270,7 @@
   // abertura
   const intro = gsap.timeline({ onComplete: () => document.body.classList.remove("is-loading") });
   intro
-    .from(".loader .avatar", { x: -70, opacity: 0, duration: .7, ease: "power3.out" })
-    .from(".loader .kmark-wrap", { x: 70, opacity: 0, duration: .7, ease: "power3.out" }, "<")
-    .from(".loader .collab__x", { scale: 0, rotate: -90, opacity: 0, duration: .5, ease: "back.out(3)" }, "-=.25")
+    .from(".loader .avatar", { scale: .7, opacity: 0, filter: "blur(10px)", duration: .8, ease: "power3.out" })
     .from(".loader__name", { opacity: 0, letterSpacing: "1em", duration: .6 }, "-=.3")
     .to(".loader__bar span", { width: "100%", duration: .9, ease: "power2.inOut" })
     .to("#loader", { yPercent: -100, duration: .7, ease: "power4.inOut" })
