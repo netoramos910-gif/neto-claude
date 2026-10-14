@@ -54,6 +54,24 @@
     $("#creatorsTrack").innerHTML = list + list;
   }
 
+  // efeito motion nos cases: o card que passa pelo centro cresce e brilha
+  function caseFocus() {
+    const box = document.querySelector("#creators .marquee");
+    if (box) {
+      const r = box.getBoundingClientRect();
+      if (r.bottom > 0 && r.top < innerHeight) {
+        const mid = r.left + r.width / 2;
+        document.querySelectorAll("#creatorsTrack .creator__avatar").forEach((el) => {
+          const c = el.getBoundingClientRect();
+          const d = Math.min(Math.abs(c.left + c.width / 2 - mid) / (r.width / 2), 1);
+          el.style.setProperty("--f", (1 - d).toFixed(3));
+        });
+      }
+    }
+    requestAnimationFrame(caseFocus);
+  }
+  requestAnimationFrame(caseFocus);
+
   // player de vídeo dos cases
   const modal = document.createElement("div");
   modal.className = "modal";

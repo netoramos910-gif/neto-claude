@@ -173,7 +173,7 @@ body::before {
   mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
 .reels__track { display: flex; gap: 18px; width: max-content; padding: 10px 0; animation: scroll 40s linear infinite; }
-.reels:hover .reels__track { animation-play-state: paused; }
+@media (hover: hover) { .reels:hover .reels__track { animation-play-state: paused; } }
 .reel {
   position: relative; flex: none; width: 220px; aspect-ratio: 9 / 16;
   border-radius: 18px; overflow: hidden; padding: 0; cursor: pointer;
@@ -209,8 +209,9 @@ body::before {
 
 /* criadores */
 .marquee { margin-top: 44px; overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
-.marquee__track { display: flex; gap: 40px; width: max-content; animation: scroll 28s linear infinite; }
-.marquee:hover .marquee__track { animation-play-state: paused; }
+.marquee__track { display: flex; gap: 40px; width: max-content; animation: scroll 24s linear infinite; }
+/* pausa só no computador (no celular o toque deixava o carrossel parado) */
+@media (hover: hover) { .marquee:hover .marquee__track { animation-play-state: paused; } }
 @keyframes scroll { to { transform: translateX(-50%); } }
 .title--center { text-align: center; }
 .marquee__track { padding: 30px 0 20px; }
@@ -227,7 +228,15 @@ body::before {
 }
 .creator__avatar--logo { background: var(--c); }
 .creator__avatar--logo img { object-fit: contain; padding: 18px; }
-.creator:hover .creator__avatar { transform: scale(1.04); box-shadow: 0 18px 40px rgba(0,0,0,.55), 0 0 36px var(--accent-glow); }
+.creator__avatar {
+  --f: 0;
+  transform: scale(calc(.86 + var(--f) * .2));
+  opacity: calc(.45 + var(--f) * .55);
+  filter: saturate(calc(.4 + var(--f) * .6));
+  border-color: rgba(31, 182, 255, calc(.15 + var(--f) * .7));
+  box-shadow: 0 18px 40px rgba(0,0,0,.55), 0 0 calc(var(--f) * 44px) var(--accent-glow);
+  transition: none;
+}
 .creator__play {
   position: absolute; inset: auto auto 14px 14px;
   width: 44px; height: 44px; border-radius: 50%; border: 0; cursor: pointer;
@@ -293,7 +302,10 @@ body::before {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee__track, .reels__track, .creator { animation: none; }
+  /* com "reduzir movimento" os carrosséis continuam passando, só mais devagar */
+  .creator { animation: none; }
+  .marquee__track { animation-duration: 48s; }
+  .reels__track { animation-duration: 80s; }
   html { scroll-behavior: auto; }
 }
 
