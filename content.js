@@ -33,9 +33,9 @@ const CONTENT = {
   //  - video: caminho de um vídeo (ex.: "media/cases/g4.mp4") ou link. Deixe "" se não tiver.
   //  - logo: true para imagens de logo (mostra a imagem inteira, sem cortar).
   creators: [
-    { name: "Nikolas Ferreira", followers: "", avatar: "media/cases/nikolas-ferreira.jpg", video: "", color: "#22c55e" },
-    { name: "Vitor Lelis",      followers: "", avatar: "media/cases/vitor-lelis.jpg",      video: "", color: "#1fb6ff" },
-    { name: "Alfredo Soares",   followers: "", avatar: "media/cases/alfredo-soares.jpg",   video: "", color: "#6c5ce7" },
+    { name: "Nikolas Ferreira", followers: "23,3M", avatar: "media/cases/nikolas-ferreira.jpg", video: "", color: "#22c55e" },
+    { name: "Vitor Lelis",      followers: "1,6M", avatar: "media/cases/vitor-lelis.jpg",      video: "", color: "#1fb6ff" },
+    { name: "Alfredo Soares",   followers: "1,7M", avatar: "media/cases/alfredo-soares.jpg",   video: "", color: "#6c5ce7" },
     { name: "G4",               followers: "", avatar: "media/cases/g4.jpg",               video: "", color: "#0b1f3a", logo: true },
   ],
 
