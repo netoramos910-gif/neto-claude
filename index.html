@@ -13,14 +13,22 @@
 <body>
   <!-- Tela de abertura -->
   <div class="loader" id="loader">
-    <div class="loader__logo avatar" data-avatar></div>
+    <div class="collab collab--loader">
+      <span class="loader__logo avatar" data-avatar></span>
+      <span class="collab__x">×</span>
+      <span class="kmark-wrap"><span class="kmark"></span></span>
+    </div>
     <div class="loader__name" data-i18n="studio">NETO RAMOS × KOMP</div>
     <div class="loader__bar"><span></span></div>
   </div>
 
   <!-- Navegação flutuante -->
   <nav class="nav" id="nav">
-    <a href="#top" class="nav__logo avatar" data-avatar aria-label="Início"></a>
+    <span class="collab collab--nav">
+      <a href="#top" class="nav__logo avatar" data-avatar aria-label="Início"></a>
+      <span class="collab__x">×</span>
+      <a href="#partner" class="kmark-wrap" aria-label="Komp"><span class="kmark"></span></a>
+    </span>
     <button class="nav__btn nav__dot" id="themeBtn" aria-label="Alternar brilho"></button>
     <button class="nav__btn nav__lang" id="langBtn" aria-label="Trocar idioma">EN</button>
     <button class="nav__btn nav__menu" id="menuBtn" aria-label="Abrir menu">
@@ -91,7 +99,7 @@
   </main>
 
   <footer class="footer">
-    <div class="footer__brand"><span class="nav__logo avatar" data-avatar></span> <span data-i18n="studio">NETO RAMOS × KOMP</span></div>
+    <div class="footer__brand"><span class="nav__logo avatar" data-avatar></span><span class="collab__x">×</span><span class="kmark-wrap"><span class="kmark"></span></span> <span data-i18n="studio">NETO RAMOS × KOMP</span></div>
     <div class="footer__links">
       <a href="#work" data-i18n="menuWork">Trabalhos</a>
         <a href="#contact" data-i18n="menuContact">Fale Comigo</a>

@@ -131,7 +131,12 @@
   if (partner.url) document.querySelectorAll("[data-partner-link]").forEach((a) => {
     a.href = partner.url; a.target = "_blank"; a.rel = "noopener";
   });
-  $("#partnerLogo").innerHTML = partner.logo ? `<img src="${partner.logo}" alt="${partner.name}" />` : `<span>${partner.name || ""}</span>`;
+  $("#partnerLogo").innerHTML = partner.logo
+    ? '<span class="kmark-wrap"><span class="kmark"></span></span>'
+    : `<span>${partner.name || ""}</span>`;
+  if (partner.logo) document.querySelectorAll(".kmark").forEach((k) => {
+    k.style.webkitMaskImage = k.style.maskImage = `url("${partner.logo}")`;
+  });
 
   // ---------- init ----------
   renderVideos();
@@ -147,7 +152,9 @@
   // abertura
   const intro = gsap.timeline({ onComplete: () => document.body.classList.remove("is-loading") });
   intro
-    .from(".loader__logo", { scale: .6, opacity: 0, duration: .6, ease: "back.out(2)" })
+    .from(".loader .avatar", { x: -70, opacity: 0, duration: .7, ease: "power3.out" })
+    .from(".loader .kmark-wrap", { x: 70, opacity: 0, duration: .7, ease: "power3.out" }, "<")
+    .from(".loader .collab__x", { scale: 0, rotate: -90, opacity: 0, duration: .5, ease: "back.out(3)" }, "-=.25")
     .from(".loader__name", { opacity: 0, letterSpacing: "1em", duration: .6 }, "-=.3")
     .to(".loader__bar span", { width: "100%", duration: .9, ease: "power2.inOut" })
     .to("#loader", { yPercent: -100, duration: .7, ease: "power4.inOut" })

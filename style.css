@@ -63,6 +63,30 @@ body::before {
 .nav__logo.avatar { width: 34px; height: 34px; }
 .loader__logo.avatar { width: 96px; height: 96px; }
 
+/* marca da collab: sua foto × K da Komp, com brilho azul */
+.collab { display: inline-flex; align-items: center; gap: 8px; }
+.collab__x { color: var(--muted); font-size: 13px; font-weight: 400; line-height: 1; }
+.collab--loader { gap: 18px; }
+.collab--loader .collab__x { font-size: 28px; }
+.collab--loader .kmark { --h: 80px; }
+.kmark-wrap {
+  display: inline-grid; place-items: center;
+  filter: drop-shadow(0 0 5px rgba(31, 182, 255, .55));
+  animation: kglow 2.8s ease-in-out infinite;
+}
+@keyframes kglow { 50% { filter: drop-shadow(0 0 14px rgba(31, 182, 255, .95)); } }
+.kmark {
+  --h: 26px;
+  display: block; height: var(--h); width: calc(var(--h) * 455 / 504);
+  -webkit-mask: url("media/komp.png") center / contain no-repeat;
+          mask: url("media/komp.png") center / contain no-repeat;
+  background: linear-gradient(115deg, #0096d6 0 42%, #e6f8ff 50%, #0096d6 58% 100%);
+  background-size: 320% 100%;
+  animation: kshine 3.2s ease-in-out infinite;
+}
+@keyframes kshine { 0% { background-position: 100% 0; } 55%, 100% { background-position: 0 0; } }
+.footer .kmark { --h: 28px; }
+
 /* ---------- NAV ---------- */
 .nav {
   position: fixed; top: 18px; left: 50%; transform: translateX(-50%); z-index: 50;
@@ -281,8 +305,8 @@ body::before {
   background: radial-gradient(ellipse at 50% 0%, rgba(31,182,255,.18), transparent 70%), var(--card);
   border: 1px solid rgba(31, 182, 255, .3);
 }
-.partner__logo { height: 64px; display: grid; place-items: center; }
-.partner__logo img { height: 100%; width: auto; object-fit: contain; }
+.partner__logo { display: grid; place-items: center; }
+.partner__logo .kmark { --h: 84px; }
 .partner__logo span { font: 600 44px/1 var(--display); letter-spacing: .04em; color: var(--accent); text-transform: uppercase; }
 .partner__title { font: 600 clamp(24px, 4vw, 38px)/1.15 var(--body); text-wrap: balance; max-width: 640px; }
 .partner .muted { max-width: 520px; }
@@ -303,6 +327,7 @@ body::before {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .kmark, .kmark-wrap { animation: none; }
   /* com "reduzir movimento" os carrosséis continuam passando, só mais devagar */
   .creator { animation: none; }
   .marquee__track { animation-duration: 48s; }
