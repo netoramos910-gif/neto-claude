@@ -292,7 +292,7 @@ body::before {
   border-top: 1px solid var(--line); padding: 40px 16px;
   display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center;
 }
-.footer__brand { display: flex; align-items: center; gap: 8px; font-weight: 600; }
+.footer__brand { display: flex; align-items: center; gap: 10px; font-weight: 600; letter-spacing: .06em; }
 .footer__links { display: flex; gap: 22px; font-size: 13px; color: var(--muted); }
 .footer__links a:hover { color: var(--accent); }
 .footer__copy { font-size: 11px; color: #4b5563; }
