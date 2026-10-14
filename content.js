@@ -4,8 +4,8 @@
 // ============================================================
 
 const CONTENT = {
-  // Sua foto (aparece no menu, na abertura e no rodapé). Ex.: "media/perfil.jpg".
-  profile: { photo: "" },
+  // Suas fotos: "photo" = rosto (menu, abertura e rodapé); "heroPhoto" = foto grande animada do topo.
+  profile: { photo: "media/perfil-rosto.jpg", heroPhoto: "media/perfil.jpg" },
 
   // Empresa parceira (aparece no botão do topo e no bloco antes do rodapé).
   //  - url: link do site ou Instagram da empresa. Deixe "" enquanto não tiver.

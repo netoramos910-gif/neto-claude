@@ -133,6 +133,23 @@
   });
   $("#partnerLogo").innerHTML = partner.logo ? `<img src="${partner.logo}" alt="${partner.name}" />` : `<span>${partner.name || ""}</span>`;
 
+  // foto do topo dividida em fatias (cada uma é um "corte")
+  const SLICES = 9;
+  const heroImg = CONTENT.profile && CONTENT.profile.heroPhoto;
+  if (heroImg) {
+    $("#heroSlices").innerHTML = Array.from({ length: SLICES }, (_, i) =>
+      `<div class="hero__slice" style="background-image:url('${heroImg}');background-size:${SLICES * 100}% 100%;background-position:${(i / (SLICES - 1)) * 100}% 0"></div>`).join("");
+    // timecode de câmera correndo (30 quadros por segundo)
+    const tc = $("#timecode"), t0 = performance.now(), pad = (n) => String(n).padStart(2, "0");
+    (function tick(now) {
+      const f = Math.floor((now - t0) / (1000 / 30));
+      tc.textContent = `${pad(Math.floor(f / 108000))}:${pad(Math.floor(f / 1800) % 60)}:${pad(Math.floor(f / 30) % 60)}:${pad(f % 30)}`;
+      requestAnimationFrame(tick);
+    })(t0);
+  } else {
+    $("#heroPhoto").remove();
+  }
+
   // ---------- init ----------
   renderVideos();
   renderContacts();
@@ -153,11 +170,15 @@
     .to("#loader", { yPercent: -100, duration: .7, ease: "power4.inOut" })
     .from("#nav", { y: -40, opacity: 0, duration: .6 }, "-=.3")
     .from("#heroTitle .ch", { y: 80, opacity: 0, filter: "blur(8px)", stagger: .04, duration: .8, ease: "power3.out" }, "-=.4")
+    .from(".hero__slice", { yPercent: (i) => (i % 2 ? 110 : -110), duration: .9, stagger: { each: .06, from: "center" }, ease: "power4.out" }, "-=.9")
     .from(".hero .reveal", { y: 24, opacity: 0, stagger: .12, duration: .6 }, "-=.5")
+    .fromTo(".hero__playhead", { left: "0%", opacity: 1 }, { left: "100%", duration: 1.1, ease: "power2.inOut" }, "<")
+    .to(".hero__playhead", { opacity: 0, duration: .3 })
     .add(() => $("#loader").remove());
 
   // parallax do hero
   gsap.to(".hero__title", { yPercent: 40, opacity: .2, scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
+  gsap.to(".hero__photo", { yPercent: 12, opacity: .15, scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
   gsap.to(".hero__bg", { scale: 1.15, scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
 
   // títulos e textos ao rolar
