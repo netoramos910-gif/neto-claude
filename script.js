@@ -126,6 +126,13 @@
     el.innerHTML = CONTENT.profile && CONTENT.profile.photo ? `<img src="${CONTENT.profile.photo}" alt="" />` : PERSON;
   });
 
+  // empresa parceira: link e logo vêm de CONTENT.partner
+  const partner = CONTENT.partner || {};
+  if (partner.url) document.querySelectorAll("[data-partner-link]").forEach((a) => {
+    a.href = partner.url; a.target = "_blank"; a.rel = "noopener";
+  });
+  $("#partnerLogo").innerHTML = partner.logo ? `<img src="${partner.logo}" alt="${partner.name}" />` : `<span>${partner.name || ""}</span>`;
+
   // ---------- init ----------
   renderVideos();
   renderContacts();

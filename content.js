@@ -7,6 +7,10 @@ const CONTENT = {
   // Sua foto (aparece no menu, na abertura e no rodapé). Ex.: "media/perfil.jpg".
   profile: { photo: "" },
 
+  // Empresa parceira (aparece no botão do topo e no bloco antes do rodapé).
+  //  - url: link do site ou Instagram da empresa. Deixe "" enquanto não tiver.
+  partner: { name: "Komp", url: "", logo: "" },
+
   // Vídeos que você editou (faixa "Trabalhos"). Formato vertical (Reels/TikTok).
   //  - name: quem aparece no vídeo / cliente. Deixe "" para não mostrar.
   //  - tag: empresa ou detalhe (ex.: "G4"). Opcional.
@@ -44,9 +48,10 @@ const CONTENT = {
     pt: {
       studio: "SEU STUDIO",
       menuWork: "Trabalhos", menuCreators: "Cases", menuContact: "Fale Comigo",
-      heroTag: "CORTES · EDIÇÃO · ANIMAÇÃO", heroTitle: "VIRALIZE",
-      heroText: "Cortes e edições feitos para prender a atenção nos primeiros segundos e fazer o seu conteúdo rodar nas redes.",
-      heroCta: "VER MEU TRABALHO ↓", heroCta2: "Pedir um orçamento",
+      heroTag: "CORTES VIRAIS · DISTRIBUIÇÃO", heroTitle: "CORTES VIRAIS",
+      heroText: "Estratégia de distribuição em cortes virais para empresários, especialistas e grandes marcas que querem alcançar milhões de pessoas.",
+      heroCta: "TRABALHE COMIGO", heroCta2: "Conheça a Komp ↗",
+      partnerEyebrow: "PARCEIRO", partnerTitle: "Prefere uma empresa? Trabalhe com a Komp", partnerText: "Para projetos maiores, trabalho junto com a Komp, minha empresa parceira.", partnerBtn: "CONHECER A KOMP ↗",
       workEyebrow: "TRABALHOS SELECIONADOS", workTitle: "FEITO POR NÓS",
       creatorsEyebrow: "CASES", creatorsTitle: "QUEM JÁ CONFIOU NO MEU TRABALHO", followers: "seguidores", watch: "Ver vídeo",
       ctaTitle: "PRONTO PARA ELEVAR SUA MARCA?", ctaText: "Vamos criar um motion que faz as pessoas pararem de rolar.", ctaBtn: "COMEÇAR UM PROJETO",
@@ -55,9 +60,10 @@ const CONTENT = {
     en: {
       studio: "YOUR STUDIO",
       menuWork: "Work", menuCreators: "Cases", menuContact: "Contact",
-      heroTag: "CLIPS · EDITING · ANIMATION", heroTitle: "GO VIRAL",
-      heroText: "Clips and edits built to hook viewers in the first seconds and make your content spread across social media.",
-      heroCta: "SEE MY WORK ↓", heroCta2: "Request a quote",
+      heroTag: "VIRAL CLIPS · DISTRIBUTION", heroTitle: "VIRAL CLIPS",
+      heroText: "A viral clip distribution strategy for entrepreneurs, experts and major brands that want to reach millions of people.",
+      heroCta: "WORK WITH ME", heroCta2: "Meet Komp ↗",
+      partnerEyebrow: "PARTNER", partnerTitle: "Prefer a company? Work with Komp", partnerText: "For larger projects, I work together with Komp, my partner company.", partnerBtn: "MEET KOMP ↗",
       workEyebrow: "SELECTED WORKS", workTitle: "MADE BY US",
       creatorsEyebrow: "CASES", creatorsTitle: "WHO HAS TRUSTED MY WORK", followers: "followers", watch: "Watch video",
       ctaTitle: "READY TO ELEVATE YOUR BRAND?", ctaText: "Let's create motion that makes people stop scrolling.", ctaBtn: "START A PROJECT",
