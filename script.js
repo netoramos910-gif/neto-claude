@@ -142,6 +142,7 @@
     $("#langBtn").textContent = lang === "pt" ? "EN" : "PT";
     splitTitle();
     renderCreators();
+    if (typeof renderStats === "function" && $("#statsGrid").children.length) renderStatsLabels();
   }
 
   function splitTitle() {
@@ -177,6 +178,35 @@
   if (partner.logo) document.querySelectorAll(".kmark").forEach((k) => {
     k.style.webkitMaskImage = k.style.maskImage = `url("${partner.logo}")`;
   });
+
+  // números: contam do zero até o valor quando aparecem na tela
+  function renderStats() {
+    $("#statsGrid").innerHTML = (CONTENT.stats || []).map((st) => `
+      <div class="stat"><b data-to="${st.value}" data-pre="${st.prefix || ""}" data-suf="${st.suffix || ""}">${st.prefix || ""}0${st.suffix || ""}</b><span>${st[lang]}</span></div>`).join("");
+    const pg = CONTENT.page || {};
+    const link = $("#statsPage");
+    if (pg.url) {
+      link.href = pg.url; link.hidden = false;
+      link.innerHTML = `${pg.logo ? `<img src="${pg.logo}" alt="" />` : ""}<span>${lang === "pt" ? "Ver a página" : "See the page"} ${pg.name} ↗</span>`;
+    }
+  }
+  renderStats();
+  function renderStatsLabels() {
+    document.querySelectorAll(".stat span").forEach((sp, i) => (sp.textContent = CONTENT.stats[i][lang]));
+  }
+  const statIO = new IntersectionObserver(([e]) => {
+    if (!e.isIntersecting) return;
+    statIO.disconnect();
+    document.querySelectorAll(".stat b").forEach((b) => {
+      const to = +b.dataset.to, t0 = performance.now(), dur = 1800;
+      (function count(now) {
+        const k = Math.min((now - t0) / dur, 1), ease = 1 - Math.pow(1 - k, 3);
+        b.textContent = b.dataset.pre + Math.round(to * ease) + b.dataset.suf;
+        if (k < 1) requestAnimationFrame(count);
+      })(t0);
+    });
+  }, { threshold: 0.4 });
+  statIO.observe($("#statsGrid"));
 
   // "como funciona": desenha as ilustrações e conta as views quando aparecem na tela
   const fmt = (n) => n.toLocaleString(lang === "pt" ? "pt-BR" : "en-US");

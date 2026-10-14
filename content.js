@@ -23,6 +23,15 @@ const CONTENT = {
     { src: "media/videos/video-6625.mp4", poster: "media/videos/video-6625.jpg", name: "", tag: "" },
   ],
 
+  // Seus números (contam subindo quando aparecem na tela).
+  //  - value: número inteiro; prefix/suffix: texto antes/depois (ex.: "+", "M").
+  stats: [
+    { value: 100, prefix: "+", suffix: "M", pt: "de visualizações geradas", en: "views generated" },
+    { value: 108, prefix: "", suffix: "K", pt: "seguidores na minha página", en: "followers on my page" },
+  ],
+  // Sua página (Kingsman). Preencha o link e o logo quando tiver (ex.: "media/kingsman.png").
+  page: { name: "Kingsman", url: "", logo: "" },
+
   // Cases: pessoas e empresas que você já atendeu.
   //  - followers: número de seguidores (ex.: "12M"). Deixe "" para esconder.
   //  - video: caminho de um vídeo (ex.: "media/cases/g4.mp4") ou link. Deixe "" se não tiver.
