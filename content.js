@@ -98,7 +98,7 @@ const CONTENT = {
       how1a: "Assisto o vídeo inteiro e marco os trechos com mais força: uma opinião forte, uma história, uma frase de impacto.", how1b: "Monto o gancho nos primeiros segundos, para a pessoa parar de rolar e ficar no seu vídeo.",
       how2t: "Distribuição", how2d: "Publico na hora certa e nas plataformas certas: Reels, TikTok e Shorts.",
       how3t: "Viraliza", how3views: "views", how3d: "Gancho forte, ritmo e retenção do início ao fim. É assim que um corte sai do seu perfil e chega a milhões de pessoas.",
-      contactBtn: "TRABALHE COMIGO", contactText: "Tem um projeto em mente? Me chama.",
+      contactBtn: "FALE COMIGO", contactText: "Tem um projeto em mente? Me chama.",
     },
     en: {
       studio: "NETO RAMOS",
@@ -134,7 +134,7 @@ const CONTENT = {
       how1a: "I watch the whole video and mark the strongest parts: a bold opinion, a story, a line that hits.", how1b: "I build the hook in the first seconds so people stop scrolling and stay on your video.",
       how2t: "Distribution", how2d: "Posted at the right time on the right platforms: Reels, TikTok and Shorts.",
       how3t: "Go viral", how3views: "views", how3d: "A strong hook, pacing and retention from start to finish. That is how a clip leaves your profile and reaches millions of people.",
-      contactBtn: "WORK WITH ME", contactText: "Got a project in mind? Reach out.",
+      contactBtn: "TALK TO ME", contactText: "Got a project in mind? Reach out.",
     },
   },
 };
