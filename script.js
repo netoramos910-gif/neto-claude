@@ -51,7 +51,7 @@
     const html = list.map((v) => `
       <figure class="viral-item">
         <div class="viral viral--flat">
-          <video src="${v.src}" poster="${v.poster}" muted loop playsinline preload="none" aria-label="${fmtM(v.views)} views"></video>
+          <video src="${v.src}" poster="${v.poster}" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback controlslist="nodownload nofullscreen noremoteplayback" tabindex="-1" aria-label="${fmtM(v.views)} views"></video>
         </div>
         <figcaption class="viral__count"><b>${fmtM(v.views)}</b> views</figcaption>
       </figure>`).join("");

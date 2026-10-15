@@ -414,7 +414,7 @@ body::before {
 /* virais na faixa passando */
 .marquee--virals { margin-top: 22px; }
 .marquee--virals .marquee__track { gap: 16px; padding: 10px 0 18px; animation-duration: 38s; }
-.viral.viral--flat { position: relative; inset: auto; transform: none; flex: none; display: block; cursor: default; width: clamp(150px, 38vw, 210px); aspect-ratio: 9 / 16; }
+.viral.viral--flat { position: relative; inset: auto; transform: none; flex: none; display: block; cursor: default; pointer-events: none; -webkit-user-select: none; user-select: none; width: clamp(150px, 38vw, 210px); aspect-ratio: 9 / 16; }
 @media (hover: hover) { .marquee--virals:hover .marquee__track { animation-play-state: paused; } }
 .viral-item { flex: none; display: grid; gap: 12px; justify-items: center; margin: 0; }
 .viral__count {
@@ -434,7 +434,7 @@ body::before {
   border: 1px solid rgba(var(--accent-rgb), .4); background: #000; color: var(--text); font: inherit;
   box-shadow: 0 0 26px rgba(var(--accent-rgb), .25);
 }
-.viral video { position: absolute; inset: 0; }
+.viral video { position: absolute; inset: 0; pointer-events: none; }
 .viral:hover { border-color: var(--accent); box-shadow: 0 0 34px var(--accent-glow); }
 .viral__views {
   position: absolute; left: 50%; bottom: 10px; transform: translateX(-50%);
