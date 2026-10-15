@@ -354,8 +354,8 @@ body::before {
 @media (hover: hover) { .ring:hover .ring__spin { animation-play-state: paused; } }
 @keyframes ringspin { from { transform: rotateX(-6deg) rotateY(0deg); } to { transform: rotateX(-6deg) rotateY(-360deg); } }
 /* cases no anel 3D */
-.ring--cases { --cw: clamp(110px, 26vw, 160px); --r: calc(var(--cw) * 1.25); height: calc(var(--cw) * 1.25 + 60px); margin-top: 26px; perspective: 900px; }
-.ring--cases .ring__spin { aspect-ratio: 4 / 5; animation-duration: 22s; }
+.ring--cases { --cw: clamp(110px, 26vw, 160px); --r: calc(var(--cw) * 1.25); height: calc(var(--cw) * 1.45 + 60px); margin-top: 26px; perspective: 900px; }
+.ring--cases .ring__spin { aspect-ratio: 3 / 4.3; animation-duration: 22s; }
 .case-card {
   position: absolute; inset: 0; transform-style: preserve-3d;
   transform: rotateY(calc(var(--i) * 360deg / var(--n))) translateZ(var(--r));
@@ -368,16 +368,18 @@ body::before {
   backface-visibility: hidden; -webkit-backface-visibility: hidden;
 }
 .case-card__back { transform: rotateY(180deg); filter: brightness(.35) saturate(.6); box-shadow: none; }
-.case-card__face img { position: absolute; inset: 0; }
-.case-card--logo .case-card__face img { object-fit: contain; }
+/* foto em cima, nome e seguidores embaixo (fora do rosto) */
+.case-card__face { display: flex; flex-direction: column; }
+.case-card__face img { position: relative; flex: none; width: 100%; height: 70%; object-fit: cover; object-position: 50% 18%; }
+.case-card__back img { height: 100%; }
+.case-card--logo .case-card__face img { object-fit: contain; object-position: center; padding: 10px; background: var(--c); }
 .case-card__info {
-  position: absolute; inset: auto 0 0 0; padding: 34px 10px 10px; text-align: center;
-  background: linear-gradient(transparent, rgba(0,0,0,.88));
-  display: grid; justify-items: center; gap: 2px;
+  flex: 1; display: grid; align-content: center; justify-items: center; gap: 2px;
+  padding: 6px 8px; text-align: center; background: #121110; border-top: 1px solid rgba(var(--accent-rgb), .25);
 }
-.case-card__info b { display: inline-flex; align-items: center; gap: 5px; font-size: 13px; }
-.case-card__info em { font-style: normal; font-size: 10px; color: var(--accent); }
-.case-card__info span { font-size: 11px; color: #cfc8bd; }
+.case-card__info b { display: inline-flex; align-items: center; gap: 4px; font-size: clamp(10px, 2.6vw, 13px); white-space: nowrap; }
+.case-card__info em { font-style: normal; font-size: clamp(8px, 2vw, 10px); color: var(--accent); line-height: 1.2; }
+.case-card__info span { font-size: clamp(9px, 2.2vw, 11px); color: #cfc8bd; }
 /* virais na faixa passando */
 .marquee--virals { margin-top: 22px; }
 .marquee--virals .marquee__track { gap: 16px; padding: 10px 0 18px; animation-duration: 38s; }
@@ -522,13 +524,14 @@ body::before {
   display: inline-block;
   background: linear-gradient(115deg, var(--accent-deep) 0 38%, #ffffff 50%, var(--accent-deep) 62% 100%);
   background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
-  filter: drop-shadow(0 0 14px rgba(var(--accent-rgb), .4));
-  animation: casesShine 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 16px rgba(var(--accent-rgb), .7)) drop-shadow(0 0 2px rgba(255,255,255,.5));
+  animation: casesShine 4s ease-in-out infinite, casesGlow 3s ease-in-out infinite;
 }
 .cases-title span:nth-child(2) { animation-delay: .12s; }
 .cases-title span:nth-child(3) { animation-delay: .24s; }
 .cases-title span:nth-child(4) { animation-delay: .36s; }
 .cases-title span:nth-child(5) { animation-delay: .48s; }
+@keyframes casesGlow { 50% { filter: drop-shadow(0 0 28px rgba(var(--accent-rgb), 1)) drop-shadow(0 0 3px rgba(255,255,255,.7)); } }
 @keyframes casesShine { 0% { background-position: 100% 0; } 60%, 100% { background-position: 0 0; } }
 .marquee { margin-top: 44px; overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
 .marquee__track { display: flex; gap: 40px; width: max-content; animation: scroll 24s linear infinite; }

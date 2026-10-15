@@ -50,7 +50,7 @@ const CONTENT = {
     { name: "Alfredo Soares",   followers: "1,7M", avatar: "media/cases/alfredo-soares.jpg",   video: "", color: "#6c5ce7" },
     { name: "Vitor Lelis",      followers: "1,6M", avatar: "media/cases/vitor-lelis.jpg",      video: "", color: "#1fb6ff" },
     { name: "Sermota",          followers: "3,9M", avatar: "media/cases/sermota.jpg",          video: "", color: "#c9822b", role: "" },
-    { name: "G4 Business",      followers: "3,2M", avatar: "media/cases/g4.jpg",               video: "", color: "#091e33" },
+    { name: "G4 Business",      followers: "3,2M", avatar: "media/cases/g4-wide.jpg",          video: "", color: "#091e33", logo: true },
     { name: "Willian Naor",     followers: "53,2K", avatar: "media/cases/william.jpg",          video: "", color: "#1fb6ff", role: "Founder & VP da Loovi" },
     { name: "Alessandro Cunha", followers: "52,7K", avatar: "media/cases/alessandro-cunha.jpg", video: "", color: "#14a3a3", role: "Fundador do Grupo BC Energia" },
   ],
