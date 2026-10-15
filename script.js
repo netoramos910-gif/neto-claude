@@ -185,11 +185,11 @@
       spin.style.transform = `rotateX(-6deg) rotateY(${-step * k}deg)`;
       cards.forEach((c, i) => c.classList.toggle("is-front", i === ((k % n) + n) % n));
     };
-    spin.style.transition = "transform 2.2s cubic-bezier(.45,0,.55,1)";
+    spin.style.transition = "transform 1.2s cubic-bezier(.45,0,.55,1)";
     apply();
-    const next = () => { k += 1; apply(); timer = setTimeout(next, 3300); };
+    const next = () => { k += 1; apply(); timer = setTimeout(next, 2200); };
     const io = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting && !timer) timer = setTimeout(next, 3200); // Nikolas fica um pouco mais em destaque
+      if (e.isIntersecting && !timer) timer = setTimeout(next, 2000); // Nikolas aparece primeiro
       if (!e.isIntersecting && timer) { clearTimeout(timer); timer = null; }
     }, { threshold: 0.3 });
     io.observe($("#creatorsRing"));
