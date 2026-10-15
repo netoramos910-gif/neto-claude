@@ -219,6 +219,9 @@
 
   gsap.from("#viralsRow .ring__spin", { scale: .6, opacity: 0, duration: 1.1, ease: "power3.out", scrollTrigger: { trigger: "#viralsRow", start: "top 85%" } });
 
+  gsap.from(".cases-title span", { yPercent: 110, opacity: 0, rotateX: -80, stagger: .08, duration: .9, ease: "back.out(1.6)",
+    scrollTrigger: { trigger: ".cases-title", start: "top 85%" } });
+
   gsap.from(".contact__item", {
     y: 30, opacity: 0, stagger: .1, duration: .6,
     scrollTrigger: { trigger: "#contacts", start: "top 88%" },
