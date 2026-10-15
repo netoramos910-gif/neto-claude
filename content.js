@@ -66,7 +66,7 @@ const CONTENT = {
     pt: {
       studio: "NETO RAMOS",
       menuWork: "Cortes", menuCreators: "Cases", menuContact: "Contato",
-      menuAbout: "Quem sou eu", menuStats: "Minha página",
+      menuAbout: "Quem sou eu", menuHow: "O que eu faço", menuStats: "Minha página",
       aboutEyebrow: "QUEM SOU EU", aboutTitle: "PRAZER, NETO RAMOS.",
       aboutText1: "Sou editor e estrategista de cortes virais. Pego vídeos longos de empresários, criadores de conteúdo e políticos e transformo em cortes que prendem a atenção e geram mais alcance.",
       aboutText2: "Na minha própria página, a Kingsman Club, os cortes já passaram de 100 milhões de visualizações.",
@@ -102,7 +102,7 @@ const CONTENT = {
     en: {
       studio: "NETO RAMOS",
       menuWork: "Clips", menuCreators: "Cases", menuContact: "Contact",
-      menuAbout: "About me", menuStats: "My page",
+      menuAbout: "About me", menuHow: "What I do", menuStats: "My page",
       aboutEyebrow: "ABOUT ME", aboutTitle: "HI, I'M NETO RAMOS.",
       aboutText1: "I edit and plan viral clips. I take long videos from entrepreneurs, content creators and politicians and turn them into clips that hook attention and drive more reach.",
       aboutText2: "On my own page, Kingsman Club, the clips have passed 100 million views.",

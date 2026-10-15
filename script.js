@@ -14,12 +14,15 @@
     const list = CONTENT.creators;
     $("#creatorsRing").innerHTML = `<div class="ring__spin" style="--n:${list.length}">${list.map((c, i) => `
       <div class="case-card ${c.logo ? "case-card--logo" : ""}" style="--i:${i};--c:${c.color}">
-        ${c.avatar ? `<img src="${c.avatar}" alt="${c.name}" loading="lazy" />` : ""}
-        <div class="case-card__info">
-          <b class="verified">${c.name}</b>
-          ${c.role ? `<em>${c.role}</em>` : ""}
-          ${c.followers ? `<span>${c.followers} ${t("followers")}</span>` : ""}
+        <div class="case-card__face">
+          ${c.avatar ? `<img src="${c.avatar}" alt="${c.name}" loading="lazy" />` : ""}
+          <div class="case-card__info">
+            <b class="verified">${c.name}</b>
+            ${c.role ? `<em>${c.role}</em>` : ""}
+            ${c.followers ? `<span>${c.followers} ${t("followers")}</span>` : ""}
+          </div>
         </div>
+        <div class="case-card__face case-card__back" aria-hidden="true">${c.avatar ? `<img src="${c.avatar}" alt="" loading="lazy" />` : ""}</div>
       </div>`).join("")}</div>`;
   }
 
@@ -47,10 +50,13 @@
     let list = CONTENT.virals || [];
     while (list.length && list.length < 8) list = list.concat(CONTENT.virals);
     const html = list.map((v) => `
-      <button class="viral viral--flat" data-video="${v.src}" aria-label="${fmtM(v.views)} views">
-        <video src="${v.src}" poster="${v.poster}" muted loop playsinline preload="none"></video>
-        <span class="viral__views"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>${fmtM(v.views)}</span>
-      </button>`).join("");
+      <figure class="viral-item">
+        <button class="viral viral--flat" data-video="${v.src}" aria-label="${fmtM(v.views)} views">
+          <video src="${v.src}" poster="${v.poster}" muted loop playsinline preload="none"></video>
+          <span class="viral__play" aria-hidden="true">▶</span>
+        </button>
+        <figcaption class="viral__count"><b>${fmtM(v.views)}</b> views</figcaption>
+      </figure>`).join("");
     $("#viralsTrack").innerHTML = html + html;
     const io = new IntersectionObserver((es) => es.forEach((e) => {
       const vid = e.target.querySelector("video");

@@ -354,17 +354,22 @@ body::before {
 @media (hover: hover) { .ring:hover .ring__spin { animation-play-state: paused; } }
 @keyframes ringspin { from { transform: rotateX(-6deg) rotateY(0deg); } to { transform: rotateX(-6deg) rotateY(-360deg); } }
 /* cases no anel 3D */
-.ring--cases { --cw: clamp(130px, 30vw, 190px); --r: calc(var(--cw) * 1.9); height: calc(var(--cw) * 1.25 + 120px); margin-top: 30px; }
-.ring--cases .ring__spin { aspect-ratio: 4 / 5; animation-duration: 32s; }
+.ring--cases { --cw: clamp(110px, 26vw, 160px); --r: calc(var(--cw) * 1.25); height: calc(var(--cw) * 1.25 + 60px); margin-top: 26px; perspective: 900px; }
+.ring--cases .ring__spin { aspect-ratio: 4 / 5; animation-duration: 22s; }
 .case-card {
-  position: absolute; inset: 0; border-radius: 18px; overflow: hidden;
+  position: absolute; inset: 0; transform-style: preserve-3d;
   transform: rotateY(calc(var(--i) * 360deg / var(--n))) translateZ(var(--r));
+}
+/* frente com foto e nome; verso só com a foto escurecida, para o anel aparecer inteiro sem texto espelhado */
+.case-card__face {
+  position: absolute; inset: 0; border-radius: 18px; overflow: hidden;
   background: var(--c, var(--card)); border: 1px solid rgba(var(--accent-rgb), .4);
   box-shadow: 0 0 26px rgba(var(--accent-rgb), .22);
-  backface-visibility: hidden; -webkit-backface-visibility: hidden; /* sem nome espelhado quando o card passa por trás */
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
 }
-.case-card img { position: absolute; inset: 0; }
-.case-card--logo img { object-fit: contain; }
+.case-card__back { transform: rotateY(180deg); filter: brightness(.35) saturate(.6); box-shadow: none; }
+.case-card__face img { position: absolute; inset: 0; }
+.case-card--logo .case-card__face img { object-fit: contain; }
 .case-card__info {
   position: absolute; inset: auto 0 0 0; padding: 34px 10px 10px; text-align: center;
   background: linear-gradient(transparent, rgba(0,0,0,.88));
@@ -376,8 +381,24 @@ body::before {
 /* virais na faixa passando */
 .marquee--virals { margin-top: 22px; }
 .marquee--virals .marquee__track { gap: 16px; padding: 10px 0 18px; animation-duration: 38s; }
-.viral.viral--flat { position: relative; inset: auto; transform: none; flex: none; width: clamp(150px, 38vw, 210px); aspect-ratio: 9 / 16; }
+.viral.viral--flat { position: relative; inset: auto; transform: none; flex: none; display: block; width: clamp(150px, 38vw, 210px); aspect-ratio: 9 / 16; }
 @media (hover: hover) { .marquee--virals:hover .marquee__track { animation-play-state: paused; } }
+.viral-item { flex: none; display: grid; gap: 12px; justify-items: center; margin: 0; }
+.viral__play {
+  position: absolute; top: 10px; right: 10px; width: 30px; height: 30px; border-radius: 50%;
+  display: grid; place-items: center; font-size: 10px; color: #fff;
+  background: rgba(0,0,0,.45); border: 1px solid rgba(255,255,255,.25);
+}
+.viral__count {
+  display: inline-flex; align-items: baseline; gap: 6px;
+  font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+}
+.viral__count b {
+  font: 600 clamp(22px, 5vw, 30px)/1 var(--display); letter-spacing: -.01em; text-transform: none;
+  color: var(--accent-light); filter: drop-shadow(0 0 12px rgba(var(--accent-rgb), .7));
+  animation: countGlow 2.6s ease-in-out infinite;
+}
+@keyframes countGlow { 50% { filter: drop-shadow(0 0 22px rgba(var(--accent-rgb), 1)); } }
 
 .viral {
   position: absolute; inset: 0; border-radius: 16px; overflow: hidden; padding: 0; cursor: pointer;
@@ -495,13 +516,13 @@ body::before {
 /* título CASES grande, com brilho passando e letras que sobem ao aparecer */
 .cases-title {
   display: flex; justify-content: center; gap: .04em;
-  font: 600 clamp(32px, 7vw, 80px)/.95 var(--display); letter-spacing: .06em;
+  font: 300 clamp(22px, 4.2vw, 42px)/1 var(--display); letter-spacing: .45em; padding-left: .45em;
 }
 .cases-title span {
   display: inline-block;
   background: linear-gradient(115deg, var(--accent-deep) 0 38%, #ffffff 50%, var(--accent-deep) 62% 100%);
   background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
-  filter: drop-shadow(0 0 24px rgba(var(--accent-rgb), .35));
+  filter: drop-shadow(0 0 14px rgba(var(--accent-rgb), .4));
   animation: casesShine 4s ease-in-out infinite;
 }
 .cases-title span:nth-child(2) { animation-delay: .12s; }
@@ -636,7 +657,7 @@ body::before {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .kmark, .nmark, .kmark-wrap, .tag--live i, .about__photo, .about__ring, .about__orbit, .cases-title span, .viral__views, .stat.is-done b { animation: none; }
+  .kmark, .nmark, .kmark-wrap, .tag--live i, .about__photo, .about__ring, .about__orbit, .cases-title span, .viral__views, .stat.is-done b, .viral__count b { animation: none; }
   .odo.is-rolling .odo__strip { animation-duration: .01s; }
   .ring__spin { animation-duration: 70s; }
   .how__step .ln, .how__step .playhead, .how__step .blade-a, .how__step .blade-b, .how__step .flow, .how__step .tile, .how__step .dot { animation: none !important; transition: none; }
