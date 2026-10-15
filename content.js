@@ -57,7 +57,7 @@ const CONTENT = {
 
   contacts: [
     // WhatsApp: troque pelo seu número com DDI e DDD, só números (ex.: 5511999999999)
-    { type: "whatsapp",  label: "WhatsApp",  value: "Chamar no WhatsApp ↗",  href: "https://wa.me/5597985980549" },
+    { type: "whatsapp",  label: "WhatsApp",  value: "Chamar no WhatsApp ↗",  href: "https://wa.me/5592985980540" },
     { type: "email",     label: "Email",     value: "netoramos910@gmail.com", href: "mailto:netoramos910@gmail.com" },
   ],
 
