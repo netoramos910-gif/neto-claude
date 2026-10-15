@@ -31,6 +31,7 @@ const CONTENT = {
   ],
   // Cortes que viralizaram na sua página (views em milhões: 1.2 = 1,2M).
   virals: [
+    { src: "media/kingsman/viral-6.mp4", poster: "media/kingsman/viral-6.jpg", views: 6.5 },
     { src: "media/kingsman/viral-1.mp4", poster: "media/kingsman/viral-1.jpg", views: 1 },
     { src: "media/kingsman/viral-2.mp4", poster: "media/kingsman/viral-2.jpg", views: 1.1 },
     { src: "media/kingsman/viral-3.mp4", poster: "media/kingsman/viral-3.jpg", views: 1.2 },
