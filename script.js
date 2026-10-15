@@ -51,10 +51,9 @@
     while (list.length && list.length < 8) list = list.concat(CONTENT.virals);
     const html = list.map((v) => `
       <figure class="viral-item">
-        <button class="viral viral--flat" data-video="${v.src}" aria-label="${fmtM(v.views)} views">
-          <video src="${v.src}" poster="${v.poster}" muted loop playsinline preload="none"></video>
-          <span class="viral__play" aria-hidden="true">▶</span>
-        </button>
+        <div class="viral viral--flat">
+          <video src="${v.src}" poster="${v.poster}" muted loop playsinline preload="none" aria-label="${fmtM(v.views)} views"></video>
+        </div>
         <figcaption class="viral__count"><b>${fmtM(v.views)}</b> views</figcaption>
       </figure>`).join("");
     $("#viralsTrack").innerHTML = html + html;
@@ -208,7 +207,25 @@
   ScrollTrigger.create({ trigger: "#faqList", start: "top 88%", once: true,
     onEnter: () => gsap.from("#faqList .faq__item", { y: 20, opacity: 0, stagger: .08, duration: .5 }) });
 
-  gsap.from("#creatorsRing .ring__spin", { scale: .6, opacity: 0, duration: 1.1, ease: "power3.out", scrollTrigger: { trigger: "#creatorsRing", start: "top 85%" } });
+  // cases: começa no Nikolas e passa um por um, devagar, parando em cada case
+  const caseSpin = document.querySelector("#creatorsRing .ring__spin");
+  if (caseSpin) {
+    const n = CONTENT.creators.length;
+    gsap.set(caseSpin, { rotationX: -6, rotationY: 0 });
+    const tour = gsap.timeline({ paused: true, repeat: -1 });
+    for (let i = 1; i <= n; i++) {
+      tour.to(caseSpin, { rotationY: -(360 / n) * i, duration: 1.3, ease: "power2.inOut" }, "+=2.2");
+    }
+    tour.set(caseSpin, { rotationY: 0 });
+    ScrollTrigger.create({ trigger: "#creatorsRing", start: "top 80%", once: true, onEnter: () => tour.play(0) });
+    gsap.from(caseSpin, { scale: .6, opacity: 0, duration: 1.1, ease: "power3.out", scrollTrigger: { trigger: "#creatorsRing", start: "top 85%" } });
+    const ring = $("#creatorsRing");
+    if (matchMedia("(hover: hover)").matches) {
+      ring.addEventListener("mouseenter", () => tour.pause());
+      ring.addEventListener("mouseleave", () => tour.resume());
+    }
+  }
+  gsap.from(".hero__word span", { yPercent: 100, opacity: 0, rotateX: -80, stagger: .06, duration: .8, ease: "back.out(1.6)", delay: 2.9 });
 
   gsap.from(".cases-title span", { yPercent: 110, opacity: 0, rotateX: -80, stagger: .08, duration: .9, ease: "back.out(1.6)",
     scrollTrigger: { trigger: ".cases-title", start: "top 85%" } });
