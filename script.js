@@ -19,7 +19,6 @@
           <div class="case-card__info">
             <b class="verified ${c.name.length > 13 ? "is-long" : ""}">${c.name}</b>
             ${c.role ? `<em>${c.role}</em>` : ""}
-            ${c.followers ? `<span>${c.followers} ${t("followers")}</span>` : ""}
           </div>
         </div>
         <div class="case-card__face case-card__back" aria-hidden="true">${c.avatar ? `<img src="${c.avatar}" alt="" loading="lazy" />` : ""}</div>
