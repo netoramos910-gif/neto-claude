@@ -6,6 +6,7 @@
   const ICONS = {
     email: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>',
     instagram: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>',
+    whatsapp: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 18.7z"/><path d="M9.2 8.6c.2-.4.5-.4.7-.4h.5c.2 0 .4.1.5.4l.6 1.4c.1.2 0 .4-.1.6l-.5.6c.6 1.1 1.4 1.9 2.5 2.5l.6-.5c.2-.1.4-.2.6-.1l1.4.6c.3.1.4.3.4.5v.5c0 .2 0 .5-.4.7-.6.3-1.6.5-3-.2-1.5-.7-2.9-2.1-3.6-3.6-.7-1.4-.5-2.4-.2-3z" fill="currentColor" stroke="none"/></svg>',
     x: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.8 3h3.1l-6.8 7.8L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.3-8.3L2 3h6.4l4.4 5.8L17.8 3Zm-1.1 16.2h1.7L7.4 4.7H5.6l11.1 14.5Z"/></svg>',
   };
 
@@ -94,6 +95,14 @@
       </a>`).join("");
   }
 
+  const contactBtn = $("#contactBtn"), contactList = $("#contacts");
+  contactBtn.addEventListener("click", () => {
+    const open = contactList.hidden;
+    contactList.hidden = !open;
+    contactBtn.setAttribute("aria-expanded", String(open));
+    if (open && window.gsap) gsap.from("#contacts .contact__item", { y: 20, opacity: 0, stagger: .08, duration: .45, ease: "power3.out" });
+  });
+
   function applyLang() {
     document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
     document.querySelectorAll("[data-i18n]").forEach((el) => {
@@ -135,8 +144,10 @@
 
   // números: contam do zero até o valor quando aparecem na tela
   function renderStats() {
+    const odo = (n) => String(n).split("").map((d) => `
+      <span class="odo" data-d="${d}"><span class="odo__strip">${"0123456789".split("").map((x) => `<span>${x}</span>`).join("")}</span></span>`).join("");
     $("#statsGrid").innerHTML = (CONTENT.stats || []).map((st) => `
-      <div class="stat"><b data-to="${st.value}" data-pre="${st.prefix || ""}" data-suf="${st.suffix || ""}">${st.prefix || ""}0${st.suffix || ""}</b><span>${st[lang]}</span></div>`).join("");
+      <div class="stat"><b aria-label="${st.prefix || ""}${st.value}${st.suffix || ""}">${st.prefix ? `<i>${st.prefix}</i>` : ""}${odo(st.value)}${st.suffix ? `<i>${st.suffix}</i>` : ""}</b><span>${st[lang]}</span></div>`).join("");
     const pg = CONTENT.page || {};
     const link = $("#statsPage");
     if (pg.url) {
@@ -146,19 +157,17 @@
   }
   renderStats();
   function renderStatsLabels() {
-    document.querySelectorAll(".stat span").forEach((sp, i) => (sp.textContent = CONTENT.stats[i][lang]));
+    document.querySelectorAll(".stat > span").forEach((sp, i) => (sp.textContent = CONTENT.stats[i][lang]));
   }
   const statIO = new IntersectionObserver(([e]) => {
     if (!e.isIntersecting) return;
     statIO.disconnect();
-    document.querySelectorAll(".stat b").forEach((b) => {
-      const to = +b.dataset.to, t0 = performance.now(), dur = 1800;
-      (function count(now) {
-        const k = Math.min((now - t0) / dur, 1), ease = 1 - Math.pow(1 - k, 3);
-        b.textContent = b.dataset.pre + Math.round(to * ease) + b.dataset.suf;
-        if (k < 1) requestAnimationFrame(count);
-      })(t0);
+    // cada dígito gira algumas voltas antes de parar no número certo, um depois do outro
+    document.querySelectorAll(".odo").forEach((o, i) => {
+      o.style.setProperty("--delay", `${i * 0.12}s`);
+      o.classList.add("is-rolling");
     });
+    setTimeout(() => document.querySelectorAll(".stat").forEach((st) => st.classList.add("is-done")), 2300);
   }, { threshold: 0.4 });
   statIO.observe($("#statsGrid"));
 

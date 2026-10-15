@@ -58,6 +58,8 @@ const CONTENT = {
   contacts: [
     { type: "email",     label: "Email",     value: "seuemail@exemplo.com", href: "mailto:seuemail@exemplo.com" },
     { type: "instagram", label: "Instagram", value: "@seuperfil",           href: "https://instagram.com/seuperfil" },
+    // WhatsApp: troque pelo seu número com DDI e DDD, só números (ex.: 5511999999999)
+    { type: "whatsapp",  label: "WhatsApp",  value: "(00) 00000-0000",      href: "https://wa.me/5500000000000" },
   ],
 
   // Textos da página em português (pt) e inglês (en).
@@ -86,7 +88,6 @@ const CONTENT = {
       faqEyebrow: "PERGUNTAS FREQUENTES", faqTitle: "TUDO O QUE VOCÊ PRECISA SABER", faqBtn: "FAZER UMA PERGUNTA",
       faq: [
         ["Que tipo de vídeo vira corte?", "Podcasts, entrevistas, palestras, lives e aulas. Se tem alguém falando algo forte, dá para virar corte."],
-        ["Você também cuida da postagem?", "Sim. Além de editar, monto a estratégia de distribuição: formatos, horários e plataformas."],
         ["Posso pedir ajustes?", "Pode. Você revisa cada corte antes de ir ao ar e pede as mudanças que quiser."],
         ["Qual é o prazo de entrega?", "Depende do volume de material. Combinamos o prazo antes de começar."],
         ["Vocês atendem projetos grandes?", "Sim. Para operações maiores, trabalho junto com a Komp, minha empresa parceira."],
@@ -94,10 +95,10 @@ const CONTENT = {
       viralsLabel: "CORTES QUE VIRALIZARAM NA PÁGINA", statsEyebrow: "MINHA PÁGINA · KINGSMAN CLUB", statsTitle: "RESULTADOS QUE GEREI COM A MINHA PÁGINA",
       howTitle: "O QUE EU FAÇO",
       how1t: "Corte", how1d: "Encontro os momentos mais fortes do seu conteúdo e transformo em cortes que prendem nos primeiros segundos.",
-      how1a: "Assisto o vídeo inteiro e marco os trechos com mais força: uma opinião forte, uma história, uma frase de impacto.", how1b: "Monto o gancho nos primeiros segundos, para a pessoa parar de rolar e ficar.", how1c: "Edito com legenda, cortes secos e ritmo, no formato vertical, para segurar a atenção até o final.",
+      how1a: "Assisto o vídeo inteiro e marco os trechos com mais força: uma opinião forte, uma história, uma frase de impacto.", how1b: "Monto o gancho nos primeiros segundos, para a pessoa parar de rolar e ficar no seu vídeo.",
       how2t: "Distribuição", how2d: "Publico na hora certa e nas plataformas certas: Reels, TikTok e Shorts.",
       how3t: "Viraliza", how3views: "views", how3d: "Gancho forte, ritmo e retenção do início ao fim. É assim que um corte sai do seu perfil e chega a milhões de pessoas.",
-      contactEyebrow: "FALE COMIGO", contactA: "Trabalhe", contactB: "comigo", contactText: "Tem um projeto em mente? Me chama.",
+      contactBtn: "TRABALHE COMIGO", contactText: "Tem um projeto em mente? Me chama.",
     },
     en: {
       studio: "NETO RAMOS",
@@ -123,7 +124,6 @@ const CONTENT = {
       faqEyebrow: "FAQ", faqTitle: "EVERYTHING YOU NEED TO KNOW", faqBtn: "ASK A QUESTION",
       faq: [
         ["What kind of video can become a clip?", "Podcasts, interviews, talks, lives and classes. If someone is saying something strong, it can become a clip."],
-        ["Do you also handle posting?", "Yes. Besides editing, I build the distribution strategy: formats, timing and platforms."],
         ["Can I ask for changes?", "Yes. You review every clip before it goes live and ask for any changes you want."],
         ["What's the turnaround time?", "It depends on the amount of material. We agree on the timeline before starting."],
         ["Do you take on large projects?", "Yes. For bigger operations, I work together with Komp, my partner company."],
@@ -131,10 +131,10 @@ const CONTENT = {
       viralsLabel: "CLIPS THAT WENT VIRAL ON THE PAGE", statsEyebrow: "MY PAGE · KINGSMAN CLUB", statsTitle: "RESULTS I GENERATED WITH MY PAGE",
       howTitle: "WHAT I DO",
       how1t: "Cut", how1d: "I find the strongest moments in your content and turn them into clips that hook viewers in the first seconds.",
-      how1a: "I watch the whole video and mark the strongest parts: a bold opinion, a story, a line that hits.", how1b: "I build the hook in the first seconds so people stop scrolling and stay.", how1c: "I edit with captions, tight cuts and pacing, in vertical format, to hold attention to the end.",
+      how1a: "I watch the whole video and mark the strongest parts: a bold opinion, a story, a line that hits.", how1b: "I build the hook in the first seconds so people stop scrolling and stay on your video.",
       how2t: "Distribution", how2d: "Posted at the right time on the right platforms: Reels, TikTok and Shorts.",
       how3t: "Go viral", how3views: "views", how3d: "A strong hook, pacing and retention from start to finish. That is how a clip leaves your profile and reaches millions of people.",
-      contactEyebrow: "TALK TO ME", contactA: "Work", contactB: "with me", contactText: "Got a project in mind? Reach out.",
+      contactBtn: "WORK WITH ME", contactText: "Got a project in mind? Reach out.",
     },
   },
 };

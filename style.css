@@ -277,6 +277,8 @@ body::before {
 /* perguntas frequentes */
 .faq__head { display: flex; align-items: end; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
 .btn--sm { padding: 11px 20px; font-size: 11px; }
+.btn--lg { padding: 18px 40px; font-size: 14px; border: 0; cursor: pointer; margin-top: 18px; }
+.contact .muted { font-size: 16px; }
 .faq__list { display: grid; gap: 10px; margin-top: 34px; }
 .faq__item { border-radius: 14px; background: var(--card); border: 1px solid var(--line); transition: border-color .2s; }
 .faq__item[open] { border-color: rgba(var(--accent-rgb), .45); }
@@ -304,11 +306,27 @@ body::before {
 .stat { display: grid; gap: 6px; justify-items: center; text-align: center; padding: 34px 16px; }
 .stat + .stat { border-left: 1px solid var(--line); }
 .stat b {
-  font: 500 clamp(44px, 9.5vw, 104px)/.95 var(--display); letter-spacing: -.03em; font-variant-numeric: tabular-nums;
-  background: linear-gradient(180deg, #ffffff 35%, var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent;
-  filter: drop-shadow(0 0 22px rgba(var(--accent-rgb), .35));
+  display: inline-flex; align-items: flex-start;
+  font: 500 clamp(44px, 9.5vw, 104px)/1 var(--display); letter-spacing: -.03em; font-variant-numeric: tabular-nums;
+  color: var(--accent-light); filter: drop-shadow(0 0 16px rgba(var(--accent-rgb), .5));
 }
-.stat span { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.stat b i { font-style: normal; }
+/* odômetro: uma fita de 0 a 9 por dígito, que rola até o número */
+.odo { display: inline-block; height: 1em; overflow: hidden; }
+.odo__strip { display: flex; flex-direction: column; transform: translateY(0); }
+.odo__strip span { height: 1em; line-height: 1; }
+.odo.is-rolling .odo__strip { animation: odoRoll 1.9s cubic-bezier(.2,.75,.15,1) var(--delay, 0s) both; }
+.odo[data-d="0"] { --to: 0; } .odo[data-d="1"] { --to: 1; } .odo[data-d="2"] { --to: 2; } .odo[data-d="3"] { --to: 3; } .odo[data-d="4"] { --to: 4; }
+.odo[data-d="5"] { --to: 5; } .odo[data-d="6"] { --to: 6; } .odo[data-d="7"] { --to: 7; } .odo[data-d="8"] { --to: 8; } .odo[data-d="9"] { --to: 9; }
+@keyframes odoRoll {
+  0% { transform: translateY(0); filter: blur(2px); }
+  70% { filter: blur(0); }
+  100% { transform: translateY(calc(var(--to) * -1em)); }
+}
+.stat.is-done b { animation: statPop .6s ease-out, statGlow 3s ease-in-out .6s infinite; }
+@keyframes statPop { 40% { transform: scale(1.08); } }
+@keyframes statGlow { 50% { filter: drop-shadow(0 0 26px rgba(var(--accent-rgb), .9)); } }
+.stat > span { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
 .stats__page { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 18px; font-size: 13px; color: var(--muted); }
 .stats__page img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
 .stats__page:hover { color: var(--accent); }
@@ -347,10 +365,14 @@ body::before {
   position: absolute; left: 50%; bottom: 10px; transform: translateX(-50%);
   display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
   padding: 7px 14px 7px 11px; border-radius: 999px;
-  font: 600 clamp(14px, 3.6vw, 18px)/1 var(--display); letter-spacing: 0; font-variant-numeric: tabular-nums;
-  color: #14110d; background: rgba(var(--accent-rgb), .95);
-  box-shadow: 0 0 22px var(--accent-glow), 0 6px 18px rgba(0,0,0,.5);
+  font: 600 clamp(13px, 3.2vw, 16px)/1 var(--display); letter-spacing: 0; font-variant-numeric: tabular-nums;
+  color: #14110d; background: linear-gradient(115deg, var(--accent) 0 40%, #fff6e6 50%, var(--accent) 60% 100%);
+  background-size: 300% 100%;
+  box-shadow: 0 0 18px var(--accent-glow), 0 6px 18px rgba(0,0,0,.5);
+  animation: viewsShine 3.5s ease-in-out infinite, viewsGlow 2.4s ease-in-out infinite;
 }
+@keyframes viewsShine { 0% { background-position: 100% 0; } 60%, 100% { background-position: 0 0; } }
+@keyframes viewsGlow { 50% { box-shadow: 0 0 30px rgba(var(--accent-rgb), .8), 0 6px 18px rgba(0,0,0,.5); } }
 .viral__views svg { width: .7em; height: .7em; }
 
 /* como funciona: desenhos em linha que se desenham ao aparecer */
@@ -446,7 +468,7 @@ body::before {
 /* título CASES grande, com brilho passando e letras que sobem ao aparecer */
 .cases-title {
   display: flex; justify-content: center; gap: .04em;
-  font: 600 clamp(64px, 17vw, 200px)/.9 var(--display); letter-spacing: .02em;
+  font: 600 clamp(40px, 9vw, 104px)/.95 var(--display); letter-spacing: .06em;
 }
 .cases-title span {
   display: inline-block;
@@ -529,6 +551,7 @@ body::before {
 .contact__title { margin-top: 16px; font: 500 clamp(26px, 5vw, 48px)/1.15 var(--display); letter-spacing: -.02em; }
 .contact__title em { font-style: normal; color: var(--accent); }
 .contact .muted { margin-top: 12px; }
+.contact__list[hidden] { display: none; }
 .contact__list { display: grid; gap: 14px; max-width: 520px; margin: 40px auto 0; }
 .contact__item {
   display: flex; align-items: center; gap: 16px;
@@ -586,7 +609,8 @@ body::before {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .kmark, .nmark, .kmark-wrap, .tag--live i, .about__photo, .about__ring, .about__orbit, .cases-title span { animation: none; }
+  .kmark, .nmark, .kmark-wrap, .tag--live i, .about__photo, .about__ring, .about__orbit, .cases-title span, .viral__views, .stat.is-done b { animation: none; }
+  .odo.is-rolling .odo__strip { animation-duration: .01s; }
   .ring__spin { animation-duration: 70s; }
   .how__step .ln, .how__step .playhead, .how__step .blade-a, .how__step .blade-b, .how__step .flow, .how__step .tile, .how__step .dot { animation: none !important; transition: none; }
   /* com "reduzir movimento" os carrosséis continuam passando, só mais devagar */
