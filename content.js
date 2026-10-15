@@ -76,7 +76,6 @@ const CONTENT = {
       partnerTitleA: "Precisa de distribuição?", partnerTitleB: "Conheça a Komp.", partnerText: "Em parceria com a Komp, seus cortes ganham estratégia e distribuição em escala.", partnerBtn: "CONHEÇA A KOMP ↗",
       workEyebrow: "TRABALHOS SELECIONADOS", workTitle: "CORTES FEITOS POR MIM",
       creatorsEyebrow: "CASES", creatorsTitle: "QUEM JÁ CONFIOU NO MEU TRABALHO", followers: "seguidores", watch: "Ver vídeo",
-      ctaEyebrow: "PRONTO PARA VIRALIZAR?", ctaTitleA: "Seu primeiro corte é", ctaTitleB: "por minha conta.", ctaText: "Mande um vídeo e receba um corte editado, sem compromisso.", ctaBtn: "PEDIR CORTE GRÁTIS",
       stepsEyebrow: "COMO FUNCIONA", stepsTitle: "SIMPLES E RÁPIDO",
       steps: [
         ["Envie o material", "Mande o link do podcast, da live ou do vídeo longo."],
@@ -90,7 +89,6 @@ const CONTENT = {
         ["Você também cuida da postagem?", "Sim. Além de editar, monto a estratégia de distribuição: formatos, horários e plataformas."],
         ["Posso pedir ajustes?", "Pode. Você revisa cada corte antes de ir ao ar e pede as mudanças que quiser."],
         ["Qual é o prazo de entrega?", "Depende do volume de material. Combinamos o prazo antes de começar."],
-        ["Como funciona o corte grátis?", "Você me manda um vídeo e eu devolvo um corte editado, sem compromisso, para você ver a qualidade antes de fechar."],
         ["Vocês atendem projetos grandes?", "Sim. Para operações maiores, trabalho junto com a Komp, minha empresa parceira."],
       ],
       viralsLabel: "CORTES QUE VIRALIZARAM NA PÁGINA", statsEyebrow: "MINHA PÁGINA · KINGSMAN CLUB", statsTitle: "RESULTADOS QUE GEREI COM A MINHA PÁGINA",
@@ -114,7 +112,6 @@ const CONTENT = {
       partnerTitleA: "Need distribution?", partnerTitleB: "Meet Komp.", partnerText: "In partnership with Komp, your clips get strategy and distribution at scale.", partnerBtn: "MEET KOMP ↗",
       workEyebrow: "SELECTED WORKS", workTitle: "CLIPS MADE BY ME",
       creatorsEyebrow: "CASES", creatorsTitle: "WHO HAS TRUSTED MY WORK", followers: "followers", watch: "Watch video",
-      ctaEyebrow: "READY TO GO VIRAL?", ctaTitleA: "Your first clip is", ctaTitleB: "on me.", ctaText: "Send a video and get an edited clip back, no strings attached.", ctaBtn: "GET A FREE CLIP",
       stepsEyebrow: "HOW IT WORKS", stepsTitle: "SIMPLE AND FAST",
       steps: [
         ["Send your material", "Share the link to your podcast, live or long video."],
@@ -128,7 +125,6 @@ const CONTENT = {
         ["Do you also handle posting?", "Yes. Besides editing, I build the distribution strategy: formats, timing and platforms."],
         ["Can I ask for changes?", "Yes. You review every clip before it goes live and ask for any changes you want."],
         ["What's the turnaround time?", "It depends on the amount of material. We agree on the timeline before starting."],
-        ["How does the free clip work?", "Send me a video and I'll send back an edited clip, no strings attached, so you can see the quality first."],
         ["Do you take on large projects?", "Yes. For bigger operations, I work together with Komp, my partner company."],
       ],
       viralsLabel: "CLIPS THAT WENT VIRAL ON THE PAGE", statsEyebrow: "MY PAGE · KINGSMAN CLUB", statsTitle: "RESULTS I GENERATED WITH MY PAGE",

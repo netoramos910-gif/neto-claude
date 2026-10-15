@@ -105,27 +105,6 @@ body::before {
 @keyframes kshine { 0% { background-position: 100% 0; } 55%, 100% { background-position: 0 0; } }
 .footer .kmark { --h: 28px; }
 
-/* tela de início estilo jogo */
-.loader { overflow: hidden; }
-.loader__scan {
-  position: absolute; inset: 0; pointer-events: none; opacity: .5;
-  background: repeating-linear-gradient(0deg, rgba(255,255,255,.035) 0 1px, transparent 1px 3px);
-  animation: scan 6s linear infinite;
-}
-@keyframes scan { to { background-position: 0 120px; } }
-.loader__start {
-  margin-top: 18px; padding: 14px 22px; border: 1px solid rgba(var(--accent-rgb), .6); border-radius: 6px;
-  background: transparent; color: var(--accent); cursor: pointer;
-  font: 400 12px/1.4 "Press Start 2P", monospace; letter-spacing: .06em;
-  text-shadow: 0 0 10px var(--accent-glow); box-shadow: 0 0 22px rgba(var(--accent-rgb), .18) inset;
-  opacity: 0; visibility: hidden; transition: background .2s, color .2s;
-}
-.loader__start.is-ready { opacity: 1; visibility: visible; animation: blinkStart 1.1s steps(2) infinite; }
-.loader__start:hover, .loader__start:focus-visible { background: var(--accent); color: var(--bg); animation: none; outline: none; }
-@keyframes blinkStart { 50% { opacity: .25; } }
-.loader__hint { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); opacity: 0; transition: opacity .4s; }
-.loader__start.is-ready + .loader__hint { opacity: 1; }
-
 /* quem sou eu */
 .about { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 48px; align-items: center; }
 .about__photo { position: relative; border-radius: 24px; overflow: hidden; aspect-ratio: 4 / 5; border: 1px solid rgba(var(--accent-rgb), .3); box-shadow: 0 0 40px rgba(var(--accent-rgb), .15); }
@@ -487,10 +466,6 @@ body::before {
   .creator__avatar { height: 190px; }
 }
 
-/* cta */
-.cta { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 18px; }
-.cta__title { font: 500 clamp(26px, 5.2vw, 56px)/1.1 var(--display); letter-spacing: -.02em; text-wrap: balance; max-width: 18ch; }
-.cta__title em { font-style: normal; color: var(--accent); }
 
 /* contato */
 .contact { text-align: center; }
@@ -552,7 +527,7 @@ body::before {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .kmark, .nmark, .kmark-wrap, .tag--live i, .loader__scan, .loader__start.is-ready { animation: none; }
+  .kmark, .nmark, .kmark-wrap, .tag--live i { animation: none; }
   .ring__spin { animation-duration: 70s; }
   .how__step .ln, .how__step .playhead, .how__step .blade-a, .how__step .blade-b, .how__step .flow, .how__step .tile, .how__step .dot { animation: none !important; transition: none; }
   /* com "reduzir movimento" os carrosséis continuam passando, só mais devagar */
