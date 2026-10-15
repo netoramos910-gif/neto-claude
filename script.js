@@ -203,7 +203,6 @@
     .add(() => $("#loader").remove());
 
   // parallax do hero
-  gsap.to(".hero__headline", { yPercent: 30, opacity: .2, scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
   gsap.to(".hero__bg", { scale: 1.15, scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
 
   // títulos e textos ao rolar
