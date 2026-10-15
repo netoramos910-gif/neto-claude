@@ -106,7 +106,8 @@ body::before {
 .footer .kmark { --h: 28px; }
 
 /* quem sou eu */
-.about { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 48px; align-items: center; }
+.about { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: 56px; align-items: center; }
+.about__photo { max-width: 400px; justify-self: end; width: 100%; }
 .about__photo { position: relative; border-radius: 24px; overflow: hidden; aspect-ratio: 4 / 5; border: 1px solid rgba(var(--accent-rgb), .3); box-shadow: 0 0 40px rgba(var(--accent-rgb), .15); }
 .about__photo img { filter: grayscale(.25) contrast(1.05); }
 .about__photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(7,7,6,.7)); }
@@ -192,6 +193,11 @@ body::before {
 .hero__title .word { display: inline-block; white-space: nowrap; }
 .hero__title .ch { display: inline-block; }
 .hero__text { max-width: 520px; color: #e2dbd0; font-size: clamp(15px, 2vw, 17px); text-shadow: 0 2px 14px rgba(0,0,0,.9), 0 0 4px rgba(0,0,0,.6); }
+.hero__headline {
+  max-width: 22ch; margin-top: 26px;
+  font: 400 clamp(24px, 4.4vw, 50px)/1.18 var(--display); letter-spacing: -.02em; text-wrap: balance;
+  color: var(--text); text-shadow: 0 0 40px rgba(var(--accent-rgb), .25);
+}
 .hero__actions { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 34px; }
 
 .btn {
@@ -322,7 +328,7 @@ body::before {
 .viral__views svg { width: .7em; height: .7em; }
 
 /* como funciona: desenhos em linha que se desenham ao aparecer */
-.how__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 44px; }
+.how__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 44px; }
 .how__step {
   position: relative; display: grid; gap: 10px; align-content: start;
   padding: 26px 24px 28px; border-radius: 20px; border: 1px solid var(--line);
@@ -517,7 +523,7 @@ body::before {
 /* ---------- RESPONSIVO ---------- */
 @media (max-width: 820px) {
   .about { grid-template-columns: 1fr; gap: 28px; }
-  .about__photo { max-width: 420px; }
+  .about__photo { max-width: 340px; justify-self: center; }
   .steps__list { grid-template-columns: 1fr 1fr; }
   .step::after { display: none; }
   .how__grid { grid-template-columns: 1fr; }

@@ -10,68 +10,6 @@
   };
 
   // ---------- render ----------
-  // cortes flutuando em órbita ao redor do N, com linhas de luz ligando o N a cada vídeo
-  function renderVideos() {
-    const vids = CONTENT.videos;
-    const card = (v, i) => `
-      <button class="reel" data-video="${v.src}" data-i="${i}" aria-label="${v.name || "Vídeo"}">
-        <video src="${v.src}" poster="${v.poster}" muted loop playsinline preload="none"></video>
-        <span class="reel__play">▶</span>
-      </button>`;
-    $("#projects").innerHTML = `
-      <svg class="orbit__lines" aria-hidden="true">
-        <defs><linearGradient id="beam" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff8ee"/><stop offset="1" stop-color="#d9c8ad"/></linearGradient></defs>
-        ${vids.map(() => '<line class="orbit__beam"/><line class="orbit__flow"/>').join("")}
-      </svg>
-      <div class="orbit__center"><span class="kmark-wrap"><span class="nmark"></span></span></div>
-      ${vids.map(card).join("")}`;
-
-    const box = $("#projects");
-    const cards = [...box.querySelectorAll(".reel")];
-    const beams = [...box.querySelectorAll(".orbit__beam")];
-    const flows = [...box.querySelectorAll(".orbit__flow")];
-    const svg = box.querySelector("svg");
-    const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let angle = -Math.PI / 2, paused = false, last = performance.now();
-    cards.forEach((c) => {
-      c.addEventListener("mouseenter", () => (paused = true));
-      c.addEventListener("mouseleave", () => (paused = false));
-    });
-
-    function frame(now) {
-      const dt = Math.min(now - last, 50); last = now;
-      if (!paused && !still) angle += dt * 0.00012;
-      const w = box.clientWidth, h = box.clientHeight;
-      const cw = cards[0] ? cards[0].offsetWidth : 0, ch = cards[0] ? cards[0].offsetHeight : 0;
-      const cx = w / 2, cy = h / 2;
-      const rx = Math.max(w / 2 - cw / 2 - 6, 60), ry = Math.max(h / 2 - ch / 2 - 6, 60);
-      svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
-      box.querySelector("#beam").setAttribute("x1", cx); box.querySelector("#beam").setAttribute("y1", cy);
-      cards.forEach((c, i) => {
-        const t = angle + (i * 2 * Math.PI) / cards.length;
-        const x = cx + rx * Math.cos(t), y = cy + ry * Math.sin(t);
-        const depth = (Math.sin(t) + 1) / 2; // 0 = atrás (em cima), 1 = na frente (embaixo)
-        c.style.transform = `translate(${x - cw / 2}px, ${y - ch / 2}px) scale(${0.82 + depth * 0.22})`;
-        c.style.zIndex = 10 + Math.round(depth * 10);
-        c.style.opacity = 0.6 + depth * 0.4;
-        [beams[i], flows[i]].forEach((l) => {
-          l.setAttribute("x1", cx); l.setAttribute("y1", cy); l.setAttribute("x2", x); l.setAttribute("y2", y);
-        });
-      });
-      box.querySelector("#beam").setAttribute("x2", cx + rx); box.querySelector("#beam").setAttribute("y2", cy);
-      requestAnimationFrame(frame);
-    }
-    requestAnimationFrame(frame);
-
-    // toca os vídeos (sem som) só quando a seção está na tela
-    const io = new IntersectionObserver(([e]) => cards.forEach((c) => {
-      const v = c.querySelector("video");
-      if (e.isIntersecting) v.play().catch(() => {}); else v.pause();
-    }), { threshold: 0.2 });
-    io.observe(box);
-  }
-
-
   function renderCreators() {
     const item = (c, i) => `
       <div class="creator" style="--d:${(i % 4) * -1.1}s">
@@ -144,11 +82,6 @@
   }
 
 
-  function renderSteps() {
-    $("#stepsList").innerHTML = t("steps").map(([title, text], i) => `
-      <li class="step reveal-item"><span class="step__num">${String(i + 1).padStart(2, "0")}</span><div><h3>${title}</h3><p>${text}</p></div></li>`).join("");
-  }
-
   function renderFaq() {
     $("#faqList").innerHTML = t("faq").map(([q, a]) => `
       <details class="faq__item"><summary>${q}<span class="faq__icon" aria-hidden="true"></span></summary><p>${a}</p></details>`).join("");
@@ -167,19 +100,10 @@
       const v = t(el.dataset.i18n);
       if (v) el.textContent = v;
     });
-    splitTitle();
     renderCreators();
-    renderSteps();
     renderFaq();
     renderVirals();
     if (typeof renderStats === "function" && $("#statsGrid").children.length) renderStatsLabels();
-  }
-
-  function splitTitle() {
-    const el = $("#heroTitle");
-    // letra por letra para a animação, mas cada palavra fica inteira na quebra de linha
-    el.innerHTML = el.textContent.trim().split(/\s+/).map((w) =>
-      `<span class="word">${[...w].map((ch) => `<span class="ch">${ch}</span>`).join("")}</span>`).join(" ");
   }
 
   // ---------- interações ----------
@@ -257,7 +181,6 @@
   document.querySelectorAll(".how__step").forEach((el) => drawIO.observe(el));
 
   // ---------- init ----------
-  renderVideos();
   renderContacts();
   applyLang();
 
@@ -275,12 +198,12 @@
     .to(".loader__bar span", { width: "100%", duration: .9, ease: "power2.inOut" })
     .to("#loader", { yPercent: -100, duration: .7, ease: "power4.inOut" })
     .from("#nav", { y: -40, opacity: 0, duration: .6 }, "-=.3")
-    .from("#heroTitle .ch", { y: 80, opacity: 0, filter: "blur(8px)", stagger: .04, duration: .8, ease: "power3.out" }, "-=.4")
+    .from(".hero__headline", { y: 40, opacity: 0, filter: "blur(8px)", duration: .9, ease: "power3.out" }, "-=.4")
     .from(".hero .reveal", { y: 24, opacity: 0, stagger: .12, duration: .6 }, "-=.5")
     .add(() => $("#loader").remove());
 
   // parallax do hero
-  gsap.to(".hero__title", { yPercent: 40, opacity: .2, scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
+  gsap.to(".hero__headline", { yPercent: 30, opacity: .2, scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
   gsap.to(".hero__bg", { scale: 1.15, scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
 
   // títulos e textos ao rolar
@@ -289,12 +212,9 @@
   });
 
   // faixa de vídeos sobe ao aparecer
-  gsap.from("#projects", { y: 60, opacity: 0, duration: .9, ease: "power3.out", scrollTrigger: { trigger: "#projects", start: "top 85%" } });
 
 
   gsap.from(".hero__mark", { scale: .5, opacity: 0, duration: .9, ease: "back.out(2)", delay: 2.6 });
-  ScrollTrigger.create({ trigger: "#stepsList", start: "top 85%", once: true,
-    onEnter: () => gsap.from("#stepsList .step", { x: -30, opacity: 0, stagger: .15, duration: .7, ease: "power3.out" }) });
   ScrollTrigger.create({ trigger: "#faqList", start: "top 88%", once: true,
     onEnter: () => gsap.from("#faqList .faq__item", { y: 20, opacity: 0, stagger: .08, duration: .5 }) });
 

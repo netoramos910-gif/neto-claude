@@ -29,7 +29,6 @@
   <div class="menu" id="menu">
     <a href="#about" data-i18n="menuAbout">Quem sou eu</a>
     <a href="#creators" data-i18n="menuCreators">Cases</a>
-    <a href="#work" data-i18n="menuWork">Cortes</a>
     <a href="#stats" data-i18n="menuStats">Minha página</a>
     <a href="#contact" data-i18n="menuContact">Contato</a>
   </div>
@@ -41,8 +40,7 @@
       <div class="hero__light"></div>
       <div class="hero__mark reveal"><span class="kmark-wrap"><span class="nmark"></span></span></div>
       <span class="tag tag--live reveal"><i></i><span data-i18n="heroTag">DISPONÍVEL PARA NOVOS PROJETOS</span></span>
-      <h1 class="hero__title" id="heroTitle" data-i18n="heroTitle">CORTES VIRAIS</h1>
-      <p class="hero__text reveal" data-i18n="heroText">Estratégia de distribuição em cortes virais para empresários, políticos, especialistas e grandes marcas que querem alcançar milhões de pessoas.</p>
+      <h1 class="hero__headline" data-i18n="heroText">Estratégia de distribuição em cortes virais para empresários, políticos, especialistas e grandes marcas que querem alcançar milhões de pessoas.</h1>
       <div class="hero__actions reveal">
         <a href="#about" class="btn btn--primary" data-i18n="heroCta">CONHEÇA MEU TRABALHO ↓</a>
       </div>
@@ -55,12 +53,6 @@
         <div class="eyebrow reveal" data-i18n="aboutEyebrow">QUEM SOU EU</div>
         <h2 class="title reveal" data-i18n="aboutTitle">PRAZER, NETO RAMOS.</h2>
         <p class="about__text reveal" data-i18n="aboutText1">Sou editor e estrategista de cortes virais. Pego vídeos longos de empresários, políticos e especialistas e transformo em cortes que prendem a atenção e rodam nas redes.</p>
-        <p class="about__text reveal" data-i18n="aboutText2">Na minha própria página, a Kingsman Club, os cortes já passaram de 100 milhões de visualizações.</p>
-        <ul class="about__tags reveal">
-          <li data-i18n="aboutTag1">Cortes virais</li>
-          <li data-i18n="aboutTag2">Reels, TikTok e Shorts</li>
-          <li data-i18n="aboutTag3">Estratégia de distribuição</li>
-        </ul>
       </div>
     </section>
 
@@ -89,31 +81,13 @@
           <p data-i18n="how1d">Encontro os momentos mais fortes do seu conteúdo e transformo em cortes que prendem nos primeiros segundos.</p>
         </article>
         <article class="how__step">
-          <svg class="doodle doodle--share" viewBox="0 0 200 130" aria-hidden="true">
-            <rect class="ln" x="80" y="20" width="40" height="72" rx="8"/>
-            <path class="ln" d="M95 46 L109 56 L95 66 Z"/>
-            <path class="ln flow" d="M120 40 C145 30 150 22 168 20"/>
-            <path class="ln flow" d="M120 56 C145 56 152 60 170 62"/>
-            <path class="ln flow" d="M120 72 C140 84 150 98 166 104"/>
-            <path class="ln flow" d="M80 56 C55 56 48 60 30 62"/>
-            <rect class="ln tile" x="168" y="10" width="20" height="20" rx="5"/>
-            <rect class="ln tile" x="170" y="52" width="20" height="20" rx="5"/>
-            <rect class="ln tile" x="166" y="94" width="20" height="20" rx="5"/>
-            <rect class="ln tile" x="10" y="52" width="20" height="20" rx="5"/>
-            <path class="ln" d="M88 110 H112"/>
-          </svg>
-          <span class="how__num">02</span>
-          <h3 data-i18n="how2t">Distribuição</h3>
-          <p data-i18n="how2d">Publico na hora certa e nas plataformas certas: Reels, TikTok e Shorts.</p>
-        </article>
-        <article class="how__step">
           <svg class="doodle doodle--viral" viewBox="0 0 200 130" aria-hidden="true">
             <path class="ln" d="M20 14 V110 H190"/>
             <path class="ln rise" d="M24 102 L60 90 L88 96 L118 66 L142 72 L178 24"/>
             <path class="ln" d="M164 24 H178 V38"/>
             <circle class="dot" cx="178" cy="24" r="4"/>
           </svg>
-          <span class="how__num">03</span>
+          <span class="how__num">02</span>
           <h3 data-i18n="how3t">Viraliza</h3>
           <p><b class="how__counter" data-to="1000000">0</b> <span data-i18n="how3views">views</span>. <span data-i18n="how3d">Seu conteúdo roda, alcança milhões de pessoas e vira autoridade.</span></p>
         </article>
@@ -125,13 +99,6 @@
       <div class="eyebrow eyebrow--center reveal" data-i18n="creatorsEyebrow">CASES</div>
       <h2 class="title title--center reveal" data-i18n="creatorsTitle">QUEM JÁ CONFIOU NO MEU TRABALHO</h2>
       <div class="marquee"><div class="marquee__track" id="creatorsTrack"></div></div>
-    </section>
-
-    <!-- PROJETOS -->
-    <section class="section" id="work">
-      <div class="eyebrow reveal" data-i18n="workEyebrow">TRABALHOS SELECIONADOS</div>
-      <h2 class="title reveal" data-i18n="workTitle">CORTES FEITOS POR MIM</h2>
-      <div class="reels" id="projects"></div>
     </section>
 
     <!-- NÚMEROS -->
@@ -149,13 +116,6 @@
         <div class="ring" id="viralsRow"></div>
       </div>
       <a class="stats__page" id="statsPage" target="_blank" rel="noopener" hidden></a>
-    </section>
-
-    <!-- PASSO A PASSO -->
-    <section class="section steps" id="steps">
-      <div class="eyebrow reveal" data-i18n="stepsEyebrow">COMO FUNCIONA</div>
-      <h2 class="title reveal" data-i18n="stepsTitle">SIMPLES E RÁPIDO</h2>
-      <ol class="steps__list" id="stepsList"></ol>
     </section>
 
     <!-- PERGUNTAS FREQUENTES -->
@@ -204,8 +164,7 @@
       <nav class="footer__links">
         <a href="#about" data-i18n="menuAbout">Quem sou eu</a>
         <a href="#creators" data-i18n="menuCreators">Cases</a>
-        <a href="#work" data-i18n="menuWork">Cortes</a>
-        <a href="#contact" data-i18n="menuContact">Contato</a>
+            <a href="#contact" data-i18n="menuContact">Contato</a>
         <a href="#partner" data-partner-link>Komp ↗</a>
       </nav>
     </div>

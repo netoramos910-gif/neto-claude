@@ -95,7 +95,7 @@ const CONTENT = {
       howEyebrow: "O QUE EU FAÇO", howTitle: "DO CORTE AO VIRAL",
       how1t: "Corte", how1d: "Encontro os momentos mais fortes do seu conteúdo e transformo em cortes que prendem nos primeiros segundos.",
       how2t: "Distribuição", how2d: "Publico na hora certa e nas plataformas certas: Reels, TikTok e Shorts.",
-      how3t: "Viraliza", how3views: "views", how3d: "Seu conteúdo roda, alcança milhões de pessoas e vira autoridade.",
+      how3t: "Viraliza", how3views: "views", how3d: "Gancho forte, ritmo e retenção do início ao fim. É assim que um corte sai do seu perfil e chega a milhões de pessoas.",
       contactEyebrow: "FALE COMIGO", contactA: "Trabalhe", contactB: "comigo", contactText: "Tem um projeto em mente? Me chama.",
     },
     en: {
@@ -131,7 +131,7 @@ const CONTENT = {
       howEyebrow: "WHAT I DO", howTitle: "FROM CLIP TO VIRAL",
       how1t: "Cut", how1d: "I find the strongest moments in your content and turn them into clips that hook viewers in the first seconds.",
       how2t: "Distribution", how2d: "Posted at the right time on the right platforms: Reels, TikTok and Shorts.",
-      how3t: "Go viral", how3views: "views", how3d: "Your content spreads, reaches millions of people and builds authority.",
+      how3t: "Go viral", how3views: "views", how3d: "A strong hook, pacing and retention from start to finish. That is how a clip leaves your profile and reaches millions of people.",
       contactEyebrow: "TALK TO ME", contactA: "Work", contactB: "with me", contactText: "Got a project in mind? Reach out.",
     },
   },
