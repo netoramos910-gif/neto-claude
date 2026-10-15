@@ -53,7 +53,7 @@ const CONTENT = {
     { name: "Sermota",          followers: "3,9M", avatar: "media/cases/sermota.jpg",          video: "", color: "#c9822b", role: "" },
     { name: "Victor Lelis",     followers: "1,6M", avatar: "media/cases/vitor-lelis.jpg",      video: "", color: "#1fb6ff" },
     { name: "Willian Naor",     followers: "53,2K", avatar: "media/cases/william.jpg",          video: "", color: "#1fb6ff", role: "Founder & VP da Loovi" },
-    { name: "Alessandro Cunha", followers: "52,7K", avatar: "media/cases/alessandro-cunha.jpg", video: "", color: "#14a3a3", role: "Founder do Grupo BC" },
+    { name: "Alessandro Cunha", followers: "52,7K", avatar: "media/cases/alessandro-cunha.jpg", video: "", color: "#14a3a3", role: "Founder do Grupo BC Energia" },
   ],
 
   contacts: [
