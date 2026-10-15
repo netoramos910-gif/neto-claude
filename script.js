@@ -173,6 +173,28 @@
   renderContacts();
   applyLang();
 
+  // cases: começa no Nikolas em destaque e desliza suave de um case para o outro.
+  // Roda sempre (inclusive no PC com "efeitos de animação" desligados no Windows) e não depende do GSAP.
+  (function caseTour() {
+    const spin = document.querySelector("#creatorsRing .ring__spin");
+    if (!spin) return;
+    const cards = [...spin.querySelectorAll(".case-card")];
+    const n = cards.length, step = 360 / n;
+    let k = 0, timer = null;
+    const apply = () => {
+      spin.style.transform = `rotateX(-6deg) rotateY(${-step * k}deg)`;
+      cards.forEach((c, i) => c.classList.toggle("is-front", i === ((k % n) + n) % n));
+    };
+    spin.style.transition = "transform 2.2s cubic-bezier(.45,0,.55,1)";
+    apply();
+    const next = () => { k += 1; apply(); timer = setTimeout(next, 3300); };
+    const io = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting && !timer) timer = setTimeout(next, 3200); // Nikolas fica um pouco mais em destaque
+      if (!e.isIntersecting && timer) { clearTimeout(timer); timer = null; }
+    }, { threshold: 0.3 });
+    io.observe($("#creatorsRing"));
+  })();
+
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (!window.gsap || reduce) { $("#loader").remove(); return; }
 
@@ -206,35 +228,7 @@
   ScrollTrigger.create({ trigger: "#faqList", start: "top 88%", once: true,
     onEnter: () => gsap.from("#faqList .faq__item", { y: 20, opacity: 0, stagger: .08, duration: .5 }) });
 
-  // cases: começa no Nikolas e passa um por um, devagar, parando em cada case
-  const caseSpin = document.querySelector("#creatorsRing .ring__spin");
-  if (caseSpin) {
-    const n = CONTENT.creators.length;
-    gsap.set(caseSpin, { rotationX: -6, rotationY: 0 });
-    // Nikolas fica em destaque um pouco mais; depois o anel desliza suave de um case para o outro
-    const cards = [...caseSpin.querySelectorAll(".case-card")];
-    const step = 360 / n;
-    const markFront = () => {
-      const rot = -gsap.getProperty(caseSpin, "rotationY");
-      const front = ((Math.round(rot / step) % n) + n) % n;
-      cards.forEach((c, i) => c.classList.toggle("is-front", i === front));
-    };
-    markFront();
-    const tour = gsap.timeline({ paused: true, repeat: -1, onUpdate: markFront });
-    tour.to({}, { duration: 3.2 }); // Nikolas em destaque logo de início
-    for (let i = 1; i <= n; i++) {
-      tour.to(caseSpin, { rotationY: -step * i, duration: 2.2, ease: "sine.inOut" });
-      if (i < n) tour.to({}, { duration: 1.1 });
-    }
-    tour.set(caseSpin, { rotationY: 0 });
-    ScrollTrigger.create({ trigger: "#creatorsRing", start: "top 80%", once: true, onEnter: () => tour.play(0) });
-    gsap.from(caseSpin, { scale: .6, opacity: 0, duration: 1.1, ease: "power3.out", scrollTrigger: { trigger: "#creatorsRing", start: "top 85%" } });
-    const ring = $("#creatorsRing");
-    if (matchMedia("(hover: hover)").matches) {
-      ring.addEventListener("mouseenter", () => tour.pause());
-      ring.addEventListener("mouseleave", () => tour.resume());
-    }
-  }
+  gsap.from("#creatorsRing", { scale: .7, opacity: 0, duration: 1.1, ease: "power3.out", scrollTrigger: { trigger: "#creatorsRing", start: "top 85%" } });
   gsap.from(".hero__word span", { yPercent: 100, opacity: 0, rotateX: -80, stagger: .06, duration: .8, ease: "back.out(1.6)", delay: 2.9 });
 
   gsap.from(".cases-title span", { yPercent: 110, opacity: 0, rotateX: -80, stagger: .08, duration: .9, ease: "back.out(1.6)",
