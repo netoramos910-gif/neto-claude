@@ -59,7 +59,7 @@ const CONTENT = {
   contacts: [
     // WhatsApp: troque pelo seu número com DDI e DDD, só números (ex.: 5511999999999)
     { type: "whatsapp",  label: "WhatsApp",  value: "Chamar no WhatsApp ↗",  href: "https://wa.me/5592985980540" },
-    { type: "email",     label: "Email",     value: "netoramos910@gmail.com", href: "mailto:netoramos910@gmail.com" },
+    { type: "email",     label: "E-mail",     value: "netoramos910@gmail.com", href: "mailto:netoramos910@gmail.com" },
   ],
 
   // Textos da página em português (pt) e inglês (en).
@@ -69,7 +69,7 @@ const CONTENT = {
       menuWork: "Cortes", menuCreators: "Cases", menuContact: "Contato",
       menuAbout: "Quem sou eu", menuHow: "O que eu faço", menuStats: "Minha página",
       aboutEyebrow: "QUEM SOU EU", aboutTitle: "PRAZER, NETO RAMOS.",
-      aboutText1: "Sou editor e estrategista de cortes virais. Pego vídeos longos de empresários, criadores de conteúdo e políticos e transformo em cortes que prendem a atenção e geram mais alcance.",
+      aboutText1: "Sou editor e estrategista de cortes virais. Pego vídeos longos de empresários, criadores de conteúdo e políticos e os transformo em cortes que prendem a atenção e geram mais alcance.",
       aboutText2: "Na minha própria página, a Kingsman Club, os cortes já passaram de 100 milhões de visualizações.",
       aboutTag1: "Cortes virais", aboutTag2: "Reels, TikTok e Shorts", aboutTag3: "Estratégia de distribuição",
       heroTag: "DISPONÍVEL PARA NOVOS PROJETOS", heroWord: "VIRALIZE", heroTitle: "CORTES VIRAIS",
@@ -90,12 +90,12 @@ const CONTENT = {
         ["Que tipo de vídeo vira corte?", "Podcasts, entrevistas, palestras, lives e aulas. Se tem alguém falando algo forte, dá para virar corte."],
         ["Posso pedir ajustes?", "Pode. Você revisa cada corte antes de ir ao ar e pede as mudanças que quiser."],
         ["Qual é o prazo de entrega?", "Depende do volume de material. Combinamos o prazo antes de começar."],
-        ["Vocês atendem projetos grandes?", "Sim. Para operações maiores, trabalho junto com a Komp, minha empresa parceira."],
+        ["Você atende projetos grandes?", "Sim. Para operações maiores, trabalho junto com a Komp, minha empresa parceira."],
       ],
       viralsLabel: "CORTES QUE VIRALIZARAM NA PÁGINA", statsEyebrow: "MINHA PÁGINA · KINGSMAN CLUB", statsTitle: "RESULTADOS QUE GEREI COM A MINHA PÁGINA",
       howTitle: "O QUE EU FAÇO",
-      how1t: "Corte", how1d: "Encontro os momentos mais fortes do seu conteúdo e transformo em cortes que prendem nos primeiros segundos.",
-      how1a: "Assisto o vídeo inteiro e marco os trechos com mais força: uma opinião forte, uma história, uma frase de impacto.", how1b: "Monto o gancho nos primeiros segundos, para a pessoa parar de rolar e ficar no seu vídeo.",
+      how1t: "Corte", how1d: "Encontro os momentos mais fortes do seu conteúdo e os transformo em cortes que prendem a atenção nos primeiros segundos.",
+      how1a: "Assisto ao vídeo inteiro e marco os trechos com mais força: uma opinião forte, uma história, uma frase de impacto.", how1b: "Monto o gancho nos primeiros segundos, para a pessoa parar de rolar e ficar no seu vídeo.",
       how2t: "Distribuição", how2d: "Publico na hora certa e nas plataformas certas: Reels, TikTok e Shorts.",
       how3t: "Viraliza", how3views: "views", how3d: "Gancho forte, ritmo e retenção do início ao fim. É assim que um corte sai do seu perfil e chega a milhões de pessoas.",
       contactBtn: "FALE COMIGO", contactText: "Tem um projeto em mente? Me chama.",
