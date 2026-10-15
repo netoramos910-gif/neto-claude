@@ -353,6 +353,32 @@ body::before {
 }
 @media (hover: hover) { .ring:hover .ring__spin { animation-play-state: paused; } }
 @keyframes ringspin { from { transform: rotateX(-6deg) rotateY(0deg); } to { transform: rotateX(-6deg) rotateY(-360deg); } }
+/* cases no anel 3D */
+.ring--cases { --cw: clamp(130px, 30vw, 190px); --r: calc(var(--cw) * 1.9); height: calc(var(--cw) * 1.25 + 120px); margin-top: 30px; }
+.ring--cases .ring__spin { aspect-ratio: 4 / 5; animation-duration: 32s; }
+.case-card {
+  position: absolute; inset: 0; border-radius: 18px; overflow: hidden;
+  transform: rotateY(calc(var(--i) * 360deg / var(--n))) translateZ(var(--r));
+  background: var(--c, var(--card)); border: 1px solid rgba(var(--accent-rgb), .4);
+  box-shadow: 0 0 26px rgba(var(--accent-rgb), .22);
+  backface-visibility: hidden; -webkit-backface-visibility: hidden; /* sem nome espelhado quando o card passa por trás */
+}
+.case-card img { position: absolute; inset: 0; }
+.case-card--logo img { object-fit: contain; }
+.case-card__info {
+  position: absolute; inset: auto 0 0 0; padding: 34px 10px 10px; text-align: center;
+  background: linear-gradient(transparent, rgba(0,0,0,.88));
+  display: grid; justify-items: center; gap: 2px;
+}
+.case-card__info b { display: inline-flex; align-items: center; gap: 5px; font-size: 13px; }
+.case-card__info em { font-style: normal; font-size: 10px; color: var(--accent); }
+.case-card__info span { font-size: 11px; color: #cfc8bd; }
+/* virais na faixa passando */
+.marquee--virals { margin-top: 22px; }
+.marquee--virals .marquee__track { gap: 16px; padding: 10px 0 18px; animation-duration: 38s; }
+.viral.viral--flat { position: relative; inset: auto; transform: none; flex: none; width: clamp(150px, 38vw, 210px); aspect-ratio: 9 / 16; }
+@media (hover: hover) { .marquee--virals:hover .marquee__track { animation-play-state: paused; } }
+
 .viral {
   position: absolute; inset: 0; border-radius: 16px; overflow: hidden; padding: 0; cursor: pointer;
   transform: rotateY(calc(var(--i) * 360deg / var(--n))) translateZ(var(--r));
@@ -385,7 +411,8 @@ body::before {
 /* card do corte: desenho à esquerda, explicação à direita */
 .how__grid .how__step { grid-template-columns: minmax(200px, 300px) 1fr; align-items: center; gap: 36px; padding: 36px; }
 .how__body { display: grid; gap: 12px; min-width: 0; }
-.how__body > p { color: var(--text); font-size: 16px; }
+.how__body > p { color: var(--muted); font-size: 15px; max-width: 62ch; }
+.how__body > p:first-of-type { color: var(--text); font-size: 16px; }
 .how__list { list-style: none; display: grid; gap: 12px; margin-top: 8px; }
 .how__list li { display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: start; padding-top: 12px; border-top: 1px solid var(--line); }
 .how__list b { font: 500 11px/1.9 var(--display); letter-spacing: .12em; color: var(--accent); }
@@ -468,7 +495,7 @@ body::before {
 /* título CASES grande, com brilho passando e letras que sobem ao aparecer */
 .cases-title {
   display: flex; justify-content: center; gap: .04em;
-  font: 600 clamp(40px, 9vw, 104px)/.95 var(--display); letter-spacing: .06em;
+  font: 600 clamp(32px, 7vw, 80px)/.95 var(--display); letter-spacing: .06em;
 }
 .cases-title span {
   display: inline-block;
@@ -517,7 +544,7 @@ body::before {
   background: var(--accent); color: #fff; font-size: 14px; box-shadow: 0 0 20px var(--accent-glow);
 }
 .creator b { display: inline-flex; align-items: center; gap: 5px; font-size: 15px; }
-.creator b::after {
+.creator b::after, .verified::after {
   content: ""; width: 15px; height: 15px; flex: none;
   background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><polygon points='12.00,0.00 14.74,1.76 18.00,1.61 19.50,4.50 22.39,6.00 22.24,9.26 24.00,12.00 22.24,14.74 22.39,18.00 19.50,19.50 18.00,22.39 14.74,22.24 12.00,24.00 9.26,22.24 6.00,22.39 4.50,19.50 1.61,18.00 1.76,14.74 0.00,12.00 1.76,9.26 1.61,6.00 4.50,4.50 6.00,1.61 9.26,1.76' fill='%230095f6' stroke='%230095f6' stroke-width='1.6' stroke-linejoin='round'/><path d='M7.4 12.3l3 3 6.2-6.4' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/></svg>") center / contain no-repeat;
 }

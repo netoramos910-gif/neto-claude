@@ -9,41 +9,19 @@
   };
 
   // ---------- render ----------
+  // cases girando num anel 3D
   function renderCreators() {
-    const item = (c, i) => `
-      <div class="creator" style="--d:${(i % 4) * -1.1}s">
-        <div class="creator__avatar ${c.logo ? "creator__avatar--logo" : ""}" style="--c:${c.color}">
-          ${c.avatar ? `<img src="${c.avatar}" alt="${c.name}" loading="lazy" />` : c.name[0]}
-          ${c.video ? `<button class="creator__play" data-video="${c.video}" aria-label="${t("watch")}: ${c.name}">▶</button>` : ""}
+    const list = CONTENT.creators;
+    $("#creatorsRing").innerHTML = `<div class="ring__spin" style="--n:${list.length}">${list.map((c, i) => `
+      <div class="case-card ${c.logo ? "case-card--logo" : ""}" style="--i:${i};--c:${c.color}">
+        ${c.avatar ? `<img src="${c.avatar}" alt="${c.name}" loading="lazy" />` : ""}
+        <div class="case-card__info">
+          <b class="verified">${c.name}</b>
+          ${c.role ? `<em>${c.role}</em>` : ""}
+          ${c.followers ? `<span>${c.followers} ${t("followers")}</span>` : ""}
         </div>
-        <b>${c.name}</b>
-        ${c.role ? `<em>${c.role}</em>` : ""}
-        ${c.followers ? `<span>${c.followers} ${t("followers")}</span>` : ""}
-      </div>`;
-    // repete a lista até encher a tela e duplica para o loop infinito do carrossel
-    let items = CONTENT.creators;
-    while (items.length < 8) items = items.concat(CONTENT.creators);
-    const list = items.map(item).join("");
-    $("#creatorsTrack").innerHTML = list + list;
+      </div>`).join("")}</div>`;
   }
-
-  // efeito motion nos cases: o card que passa pelo centro cresce e brilha
-  function caseFocus() {
-    const box = document.querySelector("#creators .marquee");
-    if (box) {
-      const r = box.getBoundingClientRect();
-      if (r.bottom > 0 && r.top < innerHeight) {
-        const mid = r.left + r.width / 2;
-        document.querySelectorAll("#creatorsTrack .creator__avatar").forEach((el) => {
-          const c = el.getBoundingClientRect();
-          const d = Math.min(Math.abs(c.left + c.width / 2 - mid) / (r.width / 2), 1);
-          el.style.setProperty("--f", (1 - d).toFixed(3));
-        });
-      }
-    }
-    requestAnimationFrame(caseFocus);
-  }
-  requestAnimationFrame(caseFocus);
 
   // player de vídeo dos cases
   const modal = document.createElement("div");
@@ -63,23 +41,23 @@
     modal.classList.add("open");
   });
 
-  // cortes virais girando num anel 3D, com as views em destaque em cada vídeo
+  // cortes virais passando numa faixa contínua, com as views em destaque
   function renderVirals() {
     const fmtM = (n) => n.toLocaleString(lang === "pt" ? "pt-BR" : "en-US", { maximumFractionDigits: 1 }) + "M";
-    const list = CONTENT.virals || [];
-    const n = list.length;
-    $("#viralsRow").innerHTML = `<div class="ring__spin" style="--n:${n}">${list.map((v, i) => `
-      <button class="viral" style="--i:${i}" data-video="${v.src}" aria-label="${fmtM(v.views)} views">
+    let list = CONTENT.virals || [];
+    while (list.length && list.length < 8) list = list.concat(CONTENT.virals);
+    const html = list.map((v) => `
+      <button class="viral viral--flat" data-video="${v.src}" aria-label="${fmtM(v.views)} views">
         <video src="${v.src}" poster="${v.poster}" muted loop playsinline preload="none"></video>
         <span class="viral__views"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>${fmtM(v.views)}</span>
-      </button>`).join("")}</div>`;
-    const ring = $("#viralsRow");
-    const io = new IntersectionObserver(([e]) => ring.querySelectorAll("video").forEach((vid) => {
+      </button>`).join("");
+    $("#viralsTrack").innerHTML = html + html;
+    const io = new IntersectionObserver((es) => es.forEach((e) => {
+      const vid = e.target.querySelector("video");
       if (e.isIntersecting) vid.play().catch(() => {}); else vid.pause();
-    }), { threshold: 0.2 });
-    io.observe(ring);
+    }), { threshold: 0.5 });
+    document.querySelectorAll("#viralsTrack .viral").forEach((el) => io.observe(el));
   }
-
 
   function renderFaq() {
     $("#faqList").innerHTML = t("faq").map(([q, a]) => `
@@ -224,7 +202,7 @@
   ScrollTrigger.create({ trigger: "#faqList", start: "top 88%", once: true,
     onEnter: () => gsap.from("#faqList .faq__item", { y: 20, opacity: 0, stagger: .08, duration: .5 }) });
 
-  gsap.from("#viralsRow .ring__spin", { scale: .6, opacity: 0, duration: 1.1, ease: "power3.out", scrollTrigger: { trigger: "#viralsRow", start: "top 85%" } });
+  gsap.from("#creatorsRing .ring__spin", { scale: .6, opacity: 0, duration: 1.1, ease: "power3.out", scrollTrigger: { trigger: "#creatorsRing", start: "top 85%" } });
 
   gsap.from(".cases-title span", { yPercent: 110, opacity: 0, rotateX: -80, stagger: .08, duration: .9, ease: "back.out(1.6)",
     scrollTrigger: { trigger: ".cases-title", start: "top 85%" } });
