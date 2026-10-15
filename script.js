@@ -17,7 +17,7 @@
         <div class="case-card__face">
           ${c.avatar ? `<img src="${c.avatar}" alt="${c.name}" loading="lazy" />` : ""}
           <div class="case-card__info">
-            <b class="verified">${c.name}</b>
+            <b class="verified ${c.name.length > 13 ? "is-long" : ""}">${c.name}</b>
             ${c.role ? `<em>${c.role}</em>` : ""}
             ${c.followers ? `<span>${c.followers} ${t("followers")}</span>` : ""}
           </div>
