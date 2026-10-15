@@ -57,9 +57,9 @@ const CONTENT = {
 
   contacts: [
     { type: "email",     label: "Email",     value: "netoramos910@gmail.com", href: "mailto:netoramos910@gmail.com" },
-    { type: "instagram", label: "Instagram", value: "@seuperfil",           href: "https://instagram.com/seuperfil" },
+    { type: "instagram", label: "Instagram", value: "@eunetoramos",         href: "https://instagram.com/eunetoramos" },
     // WhatsApp: troque pelo seu número com DDI e DDD, só números (ex.: 5511999999999)
-    { type: "whatsapp",  label: "WhatsApp",  value: "(00) 00000-0000",      href: "https://wa.me/5500000000000" },
+    { type: "whatsapp",  label: "WhatsApp",  value: "(97) 98598-0549",      href: "https://wa.me/5597985980549" },
   ],
 
   // Textos da página em português (pt) e inglês (en).
