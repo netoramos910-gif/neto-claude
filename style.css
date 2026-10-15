@@ -115,7 +115,7 @@ body::before {
 }
 .about__photo img {
   position: relative; z-index: 1; width: 100%; height: 100%; border-radius: 50%;
-  object-fit: cover; object-position: 50% 22%;
+  object-fit: cover; object-position: center;
   filter: brightness(1.06) contrast(1.06) saturate(1.05);
   border: 4px solid var(--bg);
 }
@@ -382,6 +382,12 @@ body::before {
   background: var(--c, var(--card)); border: 1px solid rgba(var(--accent-rgb), .4);
   box-shadow: 0 0 26px rgba(var(--accent-rgb), .22);
   backface-visibility: hidden; -webkit-backface-visibility: hidden;
+}
+/* case da frente em destaque */
+.case-card__face { transition: transform .9s cubic-bezier(.2,.7,.2,1), box-shadow .9s, border-color .9s; }
+.case-card.is-front .case-card__face:not(.case-card__back) {
+  transform: scale(1.08); border-color: rgba(var(--accent-rgb), .9);
+  box-shadow: 0 0 0 1px rgba(var(--accent-rgb), .4), 0 0 46px rgba(var(--accent-rgb), .55);
 }
 .case-card__back { transform: rotateY(180deg); filter: brightness(.35) saturate(.6); box-shadow: none; }
 /* foto em cima, nome e seguidores embaixo (fora do rosto) */

@@ -212,9 +212,20 @@
   if (caseSpin) {
     const n = CONTENT.creators.length;
     gsap.set(caseSpin, { rotationX: -6, rotationY: 0 });
-    const tour = gsap.timeline({ paused: true, repeat: -1 });
+    // Nikolas fica em destaque um pouco mais; depois o anel desliza suave de um case para o outro
+    const cards = [...caseSpin.querySelectorAll(".case-card")];
+    const step = 360 / n;
+    const markFront = () => {
+      const rot = -gsap.getProperty(caseSpin, "rotationY");
+      const front = ((Math.round(rot / step) % n) + n) % n;
+      cards.forEach((c, i) => c.classList.toggle("is-front", i === front));
+    };
+    markFront();
+    const tour = gsap.timeline({ paused: true, repeat: -1, onUpdate: markFront });
+    tour.to({}, { duration: 3.2 }); // Nikolas em destaque logo de início
     for (let i = 1; i <= n; i++) {
-      tour.to(caseSpin, { rotationY: -(360 / n) * i, duration: 1.3, ease: "power2.inOut" }, "+=2.2");
+      tour.to(caseSpin, { rotationY: -step * i, duration: 2.2, ease: "sine.inOut" });
+      if (i < n) tour.to({}, { duration: 1.1 });
     }
     tour.set(caseSpin, { rotationY: 0 });
     ScrollTrigger.create({ trigger: "#creatorsRing", start: "top 80%", once: true, onEnter: () => tour.play(0) });
