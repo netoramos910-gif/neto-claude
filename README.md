@@ -1,4 +1,4 @@
-# Portfólio — Motion Design
+# Neto Ramos — Cortes Virais
 
 Site de portfólio com tema escuro, animações (GSAP) e versão em português/inglês.
 
