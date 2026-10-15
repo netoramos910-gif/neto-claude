@@ -378,8 +378,8 @@ body::before {
   padding: 6px 8px; text-align: center; background: #121110; border-top: 1px solid rgba(var(--accent-rgb), .25);
 }
 .case-card__info b { display: inline-flex; align-items: center; gap: 4px; font-size: clamp(10px, 2.6vw, 13px); white-space: nowrap; }
-.case-card__info em { font-style: normal; font-size: clamp(8px, 2vw, 10px); color: var(--accent); line-height: 1.2; }
-.case-card__info span { font-size: clamp(9px, 2.2vw, 11px); color: #cfc8bd; }
+.case-card__info em { display: block; width: 100%; font-style: normal; font-size: clamp(8px, 2vw, 10px); color: var(--accent); line-height: 1.25; text-align: center; text-wrap: balance; }
+.case-card__info span { display: block; width: 100%; text-align: center; font-size: clamp(9px, 2.2vw, 11px); color: #cfc8bd; }
 /* virais na faixa passando */
 .marquee--virals { margin-top: 22px; }
 .marquee--virals .marquee__track { gap: 16px; padding: 10px 0 18px; animation-duration: 38s; }
